@@ -1,668 +1,373 @@
 <!DOCTYPE html>
-<html lang="uz" class="scroll-smooth">
+<html lang="uz">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Sabina Somsa & Non Markazi</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <title>Sabina Non & Somsa | Oltinko'l, Andijon</title>
-
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%200%20100%20100%22><text y=%22.9em%22 font-size=%2290%22>🥐</text></svg>">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- FontAwesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            serif: ['"Cormorant Garamond"', 'serif'],
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-          },
-          colors: {
-            cream: {
-              50: '#FDFBF7',
-              100: '#FAF6EE',
-              200: '#F3EDE0',
-              300: '#E7DEC9',
-            },
-            espresso: {
-              950: '#141210',
-              900: '#1D1A17',
-              800: '#2B2621',
-              700: '#423B34',
-            },
-            burgundy: {
-              800: '#6B1F12',
-              700: '#872818',
-              600: '#9E321F',
-            },
-            sandGold: {
-              500: '#B88B4A',
-              600: '#9C7238',
-              400: '#CAA15F',
-            }
-          }
-        }
-      }
-    }
-  </script>
-
   <style>
-    .hairline-b { border-bottom: 1px solid rgba(43, 38, 33, 0.08); }
-    .hairline-t { border-top: 1px solid rgba(43, 38, 33, 0.08); }
-    .hairline-border { border: 1px solid rgba(43, 38, 33, 0.09); }
+    :root {
+      --primary: #c25927;
+      --primary-hover: #a6471b;
+      --bg: #f9f6f0;
+      --card-bg: #ffffff;
+      --text: #2d2621;
+      --muted: #7a736e;
+      --border: #ebdcd2;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      padding-bottom: 95px;
+    }
+
+    header {
+      background: var(--card-bg);
+      padding: 16px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 19px;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    header p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .container {
+      padding: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 16px 0 10px 0;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .product-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid var(--border);
+    }
+
+    .product-info h3 {
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .product-info p {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .counter {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 4px 8px;
+      border: 1px solid var(--border);
+    }
+
+    .counter button {
+      background: none;
+      border: none;
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--primary);
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .counter span {
+      font-size: 15px;
+      font-weight: 700;
+      min-width: 18px;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--muted);
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 15px;
+      background: var(--card-bg);
+      outline: none;
+      color: var(--text);
+    }
+
+    .form-group input:focus, .form-group select:focus {
+      border-color: var(--primary);
+    }
+
+    .row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--card-bg);
+      padding: 12px 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 600px;
+      margin: 0 auto;
+      z-index: 20;
+    }
+
+    .total-price {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .total-price span {
+      display: block;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .submit-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
   </style>
 </head>
+<body>
 
-<body class="bg-cream-100 text-espresso-900 font-sans antialiased pb-20 lg:pb-0 overflow-x-hidden selection:bg-sandGold-400">
-
-  <!-- Faol Buyurtma Banneri (LocalStorage orqali) -->
-  <div id="activeOrderBanner" class="hidden bg-burgundy-700 text-cream-50 px-4 py-2 text-xs flex justify-between items-center shadow-md">
-    <div class="flex items-center gap-2">
-      <i class="fa-solid fa-clock-rotate-left"></i>
-      <span>Sizning faol buyurtmangiz bor!</span>
-    </div>
-    <button onclick="showSavedReceipt()" class="underline font-bold hover:text-sandGold-400">Kvitansiyani ko'rish</button>
-  </div>
-
-  <!-- Top Bar -->
-  <aside class="bg-espresso-950 text-cream-200 text-[11px] sm:text-xs py-2 px-4 border-b border-white/5 tracking-wider uppercase">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1.5 font-medium">
-      <div class="flex items-center gap-4">
-        <span><i class="fa-regular fa-clock text-sandGold-400 mr-1.5"></i> Har kuni: 08:00 — 23:00</span>
-        <span class="hidden md:inline text-white/30">•</span>
-        <span class="hidden md:inline"><i class="fa-solid fa-location-dot text-sandGold-400 mr-1.5"></i> Oltinko'l tumani, Andijon</span>
-      </div>
-      <div class="flex items-center gap-4">
-        <a href="tel:+998506663020" class="hover:text-sandGold-400 transition-colors flex items-center gap-1.5 font-semibold">
-          <i class="fa-solid fa-phone text-sandGold-400 text-[10px]"></i> +998 (50) 666-30-20
-        </a>
-      </div>
-    </div>
-  </aside>
-
-  <!-- Header -->
-  <header class="sticky top-0 z-40 bg-cream-100/95 backdrop-blur-md hairline-b">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
-      
-      <a href="#" class="flex flex-col">
-        <span class="font-serif text-2xl sm:text-4xl tracking-widest text-espresso-950 uppercase font-normal leading-none">
-          Sabina
-        </span>
-        <span class="text-[8px] sm:text-[10px] tracking-widest uppercase text-stone-500 font-semibold mt-1">
-          Issiq Somsa & Non Markazi
-        </span>
-      </a>
-
-      <!-- Savat tugmasi -->
-      <div class="flex items-center gap-3">
-        <button onclick="openCartModal()" class="px-4 py-2 rounded-full hairline-border bg-white hover:bg-cream-200 text-espresso-950 text-xs font-semibold flex items-center gap-2 transition shadow-sm">
-          <i class="fa-solid fa-basket-shopping text-burgundy-700"></i>
-          <span class="text-[11px] uppercase tracking-wider">Savat</span>
-          <span id="navCartCount" class="w-5 h-5 rounded-full bg-burgundy-700 text-cream-50 text-[10px] flex items-center justify-center font-bold">0</span>
-        </button>
-      </div>
-
-    </div>
+  <header>
+    <h1>🥐 Sabina Somsa & Non Markazi</h1>
+    <p>Issiq, barra taomlarga oldindan buyurtma bering</p>
   </header>
 
-  <main>
-    <!-- Sarlavha -->
-    <section class="pt-8 pb-10 sm:pt-14 sm:pb-16 text-center max-w-4xl mx-auto px-4">
-      <span class="text-[11px] tracking-widest uppercase font-bold text-burgundy-700 block mb-2">
-        Andijon, Oltinko'l &bull; 100% Halol va Sarxil
-      </span>
-      <h1 class="font-serif text-3xl sm:text-5xl font-light text-espresso-950 leading-tight mb-3">
-        Tandirdan uzilgan barra somsa va shirmoy nonlar
-      </h1>
-      <p class="text-xs sm:text-sm text-stone-600 max-w-2xl mx-auto">
-        Navbatda kutib qolmaslik uchun o'zingizga qulay vaqtni belgilab oldindan buyurtma bering!
-      </p>
-    </section>
+  <div class="container">
+    <div class="section-title"><i class="fa-solid fa-utensils"></i> Taomnomamiz</div>
+    <div class="product-list" id="products"></div>
 
-    <!-- Mahsulotlar Bo'limi -->
-    <section id="menyu" class="py-6 sm:py-12 bg-cream-50 hairline-t hairline-b">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- Bo'lim Tanlash Tugmalari -->
-        <div class="flex items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12">
-          <button class="menu-tab-btn active px-6 sm:px-8 py-3 rounded-full text-xs sm:text-sm uppercase tracking-widest font-bold transition-all bg-espresso-950 text-cream-50 shadow-md flex items-center gap-2" data-target="somsa">
-            <span>🥐 Somsalar</span>
-          </button>
-          <button class="menu-tab-btn px-6 sm:px-8 py-3 rounded-full text-xs sm:text-sm uppercase tracking-widest font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 flex items-center gap-2" data-target="non">
-            <span>🥖 Non Mahsulotlari</span>
-          </button>
-        </div>
+    <div class="section-title"><i class="fa-solid fa-file-pen"></i> Buyurtmachi ma'lumotlari (Majburiy)</div>
+    
+    <div class="form-group">
+      <label>Ismingiz *</label>
+      <input type="text" id="custName" placeholder="Ismingizni yozing">
+    </div>
 
-        <!-- Mahsulotlar Ro'yxati (Grid) -->
-        <div id="dishesGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 max-w-6xl mx-auto"></div>
+    <div class="form-group">
+      <label>Telefon raqamingiz *</label>
+      <input type="tel" id="custPhone" value="+998" placeholder="+998901234567">
+    </div>
 
-        <!-- Savat chaqiruv tugmasi -->
-        <div class="mt-10 text-center">
-          <button onclick="openCartModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-burgundy-700 hover:bg-burgundy-800 text-cream-50 text-xs uppercase tracking-widest font-semibold transition-all shadow-md">
-            <i class="fa-solid fa-basket-shopping text-sandGold-400"></i>
-            <span>Savatni ko'rish & Buyurtma (<span class="cart-drawer-count">0</span> ta)</span>
-          </button>
-        </div>
-
+    <div class="row-2">
+      <div class="form-group">
+        <label>Sana *</label>
+        <input type="date" id="custDate">
       </div>
-    </section>
-  </main>
+      <div class="form-group">
+        <label>Soat (Vaqti) *</label>
+        <input type="time" id="custTime">
+      </div>
+    </div>
 
-  <!-- Mobil Ekran uchun Qulay Pastki Panel -->
-  <div class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-stone-200 py-2.5 px-4 flex justify-around items-center lg:hidden shadow-lg">
-    <a href="#menyu" class="flex flex-col items-center text-[10px] text-stone-600 font-bold">
-      <i class="fa-solid fa-bread-slice text-base text-burgundy-700"></i>
-      <span>Taomnoma</span>
-    </a>
-    <button onclick="openCartModal()" class="flex flex-col items-center text-[10px] text-stone-600 font-bold relative">
-      <i class="fa-solid fa-basket-shopping text-base text-burgundy-700"></i>
-      <span>Savat</span>
-      <span class="cart-drawer-count absolute -top-1 -right-2 bg-burgundy-700 text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
-    </button>
-    <a href="tel:+998506663020" class="flex flex-col items-center text-[10px] text-stone-600 font-bold">
-      <i class="fa-solid fa-phone text-base text-emerald-600"></i>
-      <span>Aloqa</span>
-    </a>
+    <div class="form-group">
+      <label>Olib ketish usuli *</label>
+      <select id="custMethod">
+        <option value="Novvoyxonadan olib ketish">Novvoyxonadan olib ketish</option>
+        <option value="Yetkazib berish (Dostavka)">Yetkazib berish (Dostavka)</option>
+      </select>
+    </div>
   </div>
 
-  <!-- BUYURTMA MODAL OYNASI -->
-  <div id="cartModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-4 bg-espresso-950/80 backdrop-blur-sm">
-    <div class="bg-cream-100 rounded-3xl max-w-lg w-full p-5 sm:p-7 hairline-border shadow-2xl relative max-h-[92vh] overflow-y-auto">
-      
-      <button onclick="closeCartModal()" aria-label="Yopish" class="absolute top-4 sm:top-5 right-4 sm:right-5 text-stone-500 hover:text-espresso-950 text-xl font-bold">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-
-      <!-- 1-BOSQICH: MAHSULOTLAR VA MA'LUMOTLAR -->
-      <div id="step1Container">
-        <span class="text-[10px] tracking-widest uppercase font-bold text-burgundy-700 block mb-1">
-          1-Bosqich: Buyurtma
-        </span>
-        <h3 class="font-serif text-2xl font-light text-espresso-950 mb-1">
-          Tanlangan Mahsulotlar
-        </h3>
-        <p class="text-xs text-stone-600 mb-4">Mahsulotlar soni va tayyor bo'lish vaqtini kiriting.</p>
-
-        <!-- Savatdagi mahsulotlar -->
-        <div id="cartItemsContainer" class="space-y-2.5 mb-4"></div>
-
-        <!-- Jami summa -->
-        <div class="p-3.5 rounded-2xl bg-cream-200 hairline-border mb-4 flex items-center justify-between">
-          <div>
-            <span class="text-[10px] uppercase tracking-wider text-stone-500 block font-bold">Jami summa:</span>
-            <span id="cartTotalPrice" class="font-serif text-xl sm:text-2xl font-bold text-burgundy-700">0 UZS</span>
-          </div>
-          <div class="text-right">
-            <span class="text-[10px] uppercase tracking-wider text-stone-500 block font-bold">50% Oldindan to'lov:</span>
-            <span id="cartHalfPrice" class="font-serif text-base sm:text-lg font-bold text-espresso-950">0 UZS</span>
-          </div>
-        </div>
-
-        <!-- Qabul qilish usuli -->
-        <div class="mb-4">
-          <label class="block text-[11px] uppercase tracking-wider font-semibold text-espresso-800 mb-1.5">Qabul qilish usuli:</label>
-          <div class="grid grid-cols-2 gap-2 text-center text-xs">
-            <label class="hairline-border bg-white p-2.5 rounded-xl cursor-pointer has-[:checked]:bg-burgundy-700 has-[:checked]:text-white transition block">
-              <input type="radio" name="orderTypeChoice" value="Olib ketish (Novvoyxonadan)" checked class="hidden">
-              <span class="block font-semibold">Olib ketish</span>
-            </label>
-            <label class="hairline-border bg-white p-2.5 rounded-xl cursor-pointer has-[:checked]:bg-burgundy-700 has-[:checked]:text-white transition block">
-              <input type="radio" name="orderTypeChoice" value="Yetkazib berish (Dostavka)" class="hidden">
-              <span class="block font-semibold">Yetkazib berish</span>
-            </label>
-          </div>
-        </div>
-
-        <!-- Ism, Telefon, Sana va Vaqt -->
-        <div class="mb-5 space-y-3">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-[11px] uppercase tracking-wider font-semibold text-espresso-800 mb-1">
-                Ismingiz <span class="text-burgundy-700">*</span>
-              </label>
-              <input type="text" id="orderCustomerName" placeholder="Masalan: Bekzod" 
-                     class="w-full px-3.5 py-2.5 rounded-xl bg-white hairline-border text-xs sm:text-sm text-espresso-950 focus:outline-none focus:border-burgundy-700 transition">
-            </div>
-            <div>
-              <label class="block text-[11px] uppercase tracking-wider font-semibold text-espresso-800 mb-1">
-                Telefon raqamingiz <span class="text-burgundy-700">*</span>
-              </label>
-              <input type="tel" id="orderCustomerPhone" value="+998" placeholder="+998 90 123 45 67" 
-                     class="w-full px-3.5 py-2.5 rounded-xl bg-white hairline-border text-xs sm:text-sm text-espresso-950 focus:outline-none focus:border-burgundy-700 transition">
-            </div>
-          </div>
-
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label class="block text-[11px] uppercase tracking-wider font-semibold text-espresso-800 mb-1">
-                Sana <span class="text-burgundy-700">*</span>
-              </label>
-              <input type="date" id="orderDate" 
-                     class="w-full px-3 py-2.5 rounded-xl bg-white hairline-border text-xs sm:text-sm text-espresso-950 focus:outline-none focus:border-burgundy-700 transition">
-            </div>
-            <div>
-              <label class="block text-[11px] uppercase tracking-wider font-semibold text-espresso-800 mb-1">
-                Tayyor bo'lish vaqti <span class="text-burgundy-700">*</span>
-              </label>
-              <input type="time" id="orderTime" value="12:00" 
-                     class="w-full px-3 py-2.5 rounded-xl bg-white hairline-border text-xs sm:text-sm text-espresso-950 focus:outline-none focus:border-burgundy-700 transition">
-            </div>
-          </div>
-
-          <div>
-            <label class="block text-[11px] uppercase tracking-wider font-semibold text-espresso-800 mb-1">
-              Qo'shimcha izoh (ixtiyoriy)
-            </label>
-            <input type="text" id="orderNotes" placeholder="Masalan: issiqroq bo'lsin, qizargan non..." 
-                   class="w-full px-3.5 py-2 rounded-xl bg-white hairline-border text-xs text-espresso-950 focus:outline-none focus:border-burgundy-700 transition">
-          </div>
-        </div>
-
-        <button onclick="handleProceedOrder()" class="w-full py-3.5 rounded-xl bg-burgundy-700 hover:bg-burgundy-800 text-cream-50 text-xs uppercase tracking-widest font-bold transition shadow-md flex items-center justify-center gap-2">
-          <span>Oldinga: 50% To'lov bosqichi</span>
-          <i class="fa-solid fa-arrow-right"></i>
-        </button>
-      </div>
-
-      <!-- 2-BOSQICH: TO'LOV VA CHEK YUKLASH -->
-      <div id="step2Container" class="hidden">
-        <span class="text-[10px] tracking-widest uppercase font-bold text-burgundy-700 block mb-1">
-          2-Bosqich: Xavfsiz To'lov
-        </span>
-        <h3 class="font-serif text-2xl font-light text-espresso-950 mb-1">
-          50% Oldindan To'lov
-        </h3>
-        <p class="text-xs text-stone-600 mb-4">Taom oshxonada tayyorlanishi uchun to'lov chekini ilova qiling.</p>
-
-        <!-- Karta rekvizitlari -->
-        <div class="p-4 rounded-2xl bg-white hairline-border shadow-xs mb-4 text-center">
-          <span class="text-[10px] uppercase font-bold text-stone-500 tracking-wider">To'lanishi kerak bo'lgan summa (50%):</span>
-          <div id="paymentRequiredAmount" class="font-serif text-2xl font-bold text-burgundy-700 my-1">0 UZS</div>
-          
-          <div class="mt-3 flex items-center justify-between p-2.5 rounded-xl bg-cream-100 hairline-border">
-            <div class="text-left">
-              <span class="text-[10px] text-stone-500 uppercase block font-semibold">Karta raqami:</span>
-              <span id="cardNumberText" class="font-mono text-sm font-bold text-espresso-950">9860 7777 8888 9999</span>
-            </div>
-            <button onclick="copyCardNumber()" class="px-3 py-1.5 rounded-lg bg-espresso-950 text-cream-50 text-xs font-semibold hover:bg-burgundy-700 transition">
-              <i class="fa-regular fa-copy mr-1"></i> Nusxa olish
-            </button>
-          </div>
-          <span class="text-[11px] text-stone-600 block mt-2 font-medium">Karta egasi: Sabina Cafe & Restoran</span>
-        </div>
-
-        <!-- Chek rasmini yuklash -->
-        <div class="mb-5">
-          <label class="block text-[11px] uppercase tracking-wider font-semibold text-espresso-800 mb-1">
-            To'lov chekini (skrinshotini) yuklang <span class="text-burgundy-700">*</span>
-          </label>
-          <input type="file" id="receiptFileInput" accept="image/*,.pdf" 
-                 class="w-full text-xs text-stone-600 file:mr-3 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-espresso-950 file:text-cream-50 hover:file:bg-burgundy-700 cursor-pointer hairline-border rounded-xl bg-white p-2">
-        </div>
-
-        <div class="flex gap-2">
-          <button onclick="backToStep1()" class="w-1/3 py-3 rounded-xl bg-stone-200 hover:bg-stone-300 text-stone-800 text-xs uppercase tracking-wider font-bold transition">
-            Orqaga
-          </button>
-          <button id="finalSubmitBtn" onclick="submitFinalOrderWithReceipt()" class="w-2/3 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs uppercase tracking-wider font-bold transition shadow-md flex items-center justify-center gap-1.5">
-            <i class="fa-solid fa-check"></i>
-            <span>Tasdiqlash & Yuborish</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- 3-BOSQICH: KVITANSIYA -->
-      <div id="receiptContainer" class="hidden text-center py-4">
-        <div class="w-14 h-14 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-2xl mx-auto mb-3">
-          <i class="fa-solid fa-check"></i>
-        </div>
-        <h3 class="font-serif text-2xl font-bold text-espresso-950 mb-1">Buyurtmangiz Qabul Qilindi!</h3>
-        <p class="text-xs text-stone-600 mb-4">50% to'lov ma'muriyatga uzatildi. Olib ketish vaqtida kelishingiz mumkin.</p>
-
-        <div id="receiptDetails" class="p-4 rounded-2xl bg-white hairline-border text-left text-xs space-y-2 mb-4"></div>
-
-        <button onclick="clearSavedOrderAndClose()" class="w-full py-3 rounded-xl bg-espresso-950 hover:bg-burgundy-700 text-cream-50 text-xs uppercase tracking-wider font-bold transition">
-          Yopish
-        </button>
-      </div>
-
+  <div class="bottom-bar">
+    <div class="total-price">
+      Jami summa:
+      <span id="totalDisplay">0 UZS</span>
     </div>
+    <button class="submit-btn" onclick="submitOrder()">
+      <i class="fa-solid fa-paper-plane"></i> Buyurtma berish
+    </button>
   </div>
 
   <script>
-    // Maxsus saralangan yuqori sifatli (HD) rasmlar bazasi
-    const productsDatabase = {
-      // ---------- NONLAR ----------
-      "dolta-non-kichik":  { name: "Do'lta non (kichik)", price: 8000,  category: "non",   image: "https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?auto=format&fit=crop&w=600&q=80" },
-      "dolta-non":         { name: "Dolta non",           price: 10000, category: "non",   image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" },
-      "dolta-patir":       { name: "Dolta patir",         price: 15000, category: "non",   image: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=600&q=80" },
-      "tovuqli-non":       { name: "Tovuqli non",         price: 6000,  category: "non",   image: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80" },
-      "gijda-non":         { name: "Gijda non",           price: 6000,  category: "non",   image: "https://images.unsplash.com/photo-1568254183919-78a4f43a2877?auto=format&fit=crop&w=600&q=80" },
-      "patir":             { name: "Patir",               price: 10000, category: "non",   image: "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=600&q=80" },
-      "taqa-non":          { name: "Taqa non",            price: 6000,  category: "non",   image: "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=600&q=80" },
-      "goshtli-non":       { name: "Go'shtli non",        price: 10000, category: "non",   image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80" },
-      "kulcha-non":        { name: "Kulcha non",          price: 5000,  category: "non",   image: "https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?auto=format&fit=crop&w=600&q=80" },
-      "patir-katta":       { name: "Patir katta",         price: 20000, category: "non",   image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" },
-      "dolta-patir-katta": { name: "Do'lta patir katta",  price: 20000, category: "non",   image: "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=600&q=80" },
-      "kokatli-non":       { name: "Ko'katli non",        price: 10000, category: "non",   image: "https://images.unsplash.com/photo-1573140247632-f8fd74997d5c?auto=format&fit=crop&w=600&q=80" },
-      "pitsa-mini":        { name: "Pitsa mini",          price: 6000,  category: "non",   image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" },
+    const tg = window.Telegram?.WebApp;
+    if (tg) {
+      tg.ready();
+      tg.expand();
+    }
 
-      // ---------- SOMSALAR ----------
-      "kartoshka-somsa":   { name: "Kartoshka somsa",     price: 4000,  category: "somsa", image: "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=600&q=80" },
-      "oshqovoq-somsa":    { name: "Oshqovoq somsa",      price: 4000,  category: "somsa", image: "https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&w=600&q=80" },
-      "goshtli-somsa":     { name: "Go'shtli somsa",      price: 6000,  category: "somsa", image: "https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&w=600&q=80" },
-      "tovuqli-somsa":     { name: "Tovuqli somsa",       price: 5000,  category: "somsa", image: "https://images.unsplash.com/photo-1628294895950-9805252327bc?auto=format&fit=crop&w=600&q=80" },
-      "kok-somsa":         { name: "Ko'k somsa",          price: 4000,  category: "somsa", image: "https://images.unsplash.com/photo-1621996346565-e3d5d6281691?auto=format&fit=crop&w=600&q=80" },
-      "somsa-mini":        { name: "Somsa mini",          price: 2000,  category: "somsa", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" }
-    };
+    const menuItems = [
+      { id: "tandir_somsa", name: "Tandir go'shtli somsa", price: 7000 },
+      { id: "qovurma_somsa", name: "Qatlama somsachalar", price: 6000 },
+      { id: "kartoshka_somsa", name: "Kartoshkali somsa", price: 4000 },
+      { id: "oshqovoq_somsa", name: "Oshqovoqli somsa", price: 4000 },
+      { id: "patir_non", name: "Issiq Patir non", price: 6000 }
+    ];
 
     let cart = {};
-    let currentCategory = 'somsa';
-    const BOT_TOKEN = "8934605818:AAE_30e_H4LMnguZSe6ut-DTrmfLNTMb6qc";
-    const ADMIN_CHAT_ID = "-1004457319555";
 
-    // Mahsulotlarni chizish
-    function renderProducts(category) {
-      const grid = document.getElementById('dishesGrid');
-      if (!grid) return;
-      const items = Object.entries(productsDatabase).filter(([_, item]) => item.category === category);
-      
-      grid.innerHTML = items.map(([id, item]) => {
-        return `
-          <div class="bg-white rounded-2xl overflow-hidden hairline-border shadow-xs flex flex-col justify-between p-2.5 sm:p-3.5 group">
-            <div>
-              <div class="relative aspect-square rounded-xl overflow-hidden mb-2.5 bg-stone-100">
-                <img src="${item.image}" alt="${item.name}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-              </div>
-              <h4 class="font-serif text-sm sm:text-base text-espresso-950 font-semibold leading-tight mb-1">${item.name}</h4>
-              <p class="text-xs sm:text-sm font-bold text-burgundy-700">${item.price.toLocaleString('uz-UZ')} UZS</p>
-            </div>
-            <button onclick="addToCart('${id}')" class="mt-3 w-full py-2 rounded-xl bg-espresso-950 hover:bg-burgundy-700 active:scale-95 text-cream-50 text-[11px] sm:text-xs uppercase tracking-wider font-semibold transition flex items-center justify-center gap-1.5 shadow-sm">
-              <i class="fa-solid fa-plus text-[10px]"></i>
-              <span>Savatga</span>
-            </button>
+    // Bugungi sana va vaqtni avtomatik to'ldirish
+    const now = new Date();
+    document.getElementById('custDate').value = now.toISOString().split('T')[0];
+    now.setMinutes(now.getMinutes() + 30);
+    document.getElementById('custTime').value = now.toTimeString().slice(0, 5);
+
+    function renderMenu() {
+      const container = document.getElementById('products');
+      container.innerHTML = menuItems.map(item => `
+        <div class="product-card">
+          <div class="product-info">
+            <h3>${item.name}</h3>
+            <p>${item.price.toLocaleString()} UZS</p>
           </div>
-        `;
-      }).join('');
+          <div class="counter">
+            <button onclick="changeQty('${item.id}', -1)">-</button>
+            <span id="qty_${item.id}">0</span>
+            <button onclick="changeQty('${item.id}', 1)">+</button>
+          </div>
+        </div>
+      `).join('');
     }
 
-    // Bo'lim almashtirish
-    document.querySelectorAll('.menu-tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.menu-tab-btn').forEach(b => {
-          b.classList.remove('active', 'bg-espresso-950', 'text-cream-50', 'shadow-md');
-          b.classList.add('bg-cream-200', 'text-stone-700');
-        });
-        btn.classList.add('active', 'bg-espresso-950', 'text-cream-50', 'shadow-md');
-        btn.classList.remove('bg-cream-200', 'text-stone-700');
-        currentCategory = btn.getAttribute('data-target');
-        renderProducts(currentCategory);
-      });
-    });
-
-    // Savat boshqaruvi
-    function addToCart(id) {
-      cart[id] = (cart[id] || 0) + 1;
-      updateCartUI();
-    }
-
-    function changeCartItemQty(id, delta) {
-      if (cart[id]) {
-        cart[id] += delta;
-        if (cart[id] <= 0) delete cart[id];
+    function changeQty(id, delta) {
+      const current = cart[id] || 0;
+      const next = current + delta;
+      if (next <= 0) {
+        delete cart[id];
+      } else {
+        cart[id] = next;
       }
-      updateCartUI();
+      document.getElementById(`qty_${id}`).innerText = cart[id] || 0;
+      updateTotal();
     }
 
-    function updateCartUI() {
-      const keys = Object.keys(cart);
-      let totalCount = 0;
-      let totalPrice = 0;
-
-      keys.forEach(id => {
-        const qty = cart[id];
-        totalCount += qty;
-        totalPrice += (productsDatabase[id].price * qty);
+    function updateTotal() {
+      let total = 0;
+      menuItems.forEach(item => {
+        if (cart[item.id]) {
+          total += cart[item.id] * item.price;
+        }
       });
+      document.getElementById('totalDisplay').innerText = total.toLocaleString() + " UZS";
+      return total;
+    }
 
-      document.getElementById('navCartCount').innerText = totalCount;
-      document.querySelectorAll('.cart-drawer-count').forEach(el => el.innerText = totalCount);
-      document.getElementById('cartTotalPrice').innerText = totalPrice.toLocaleString('uz-UZ') + " UZS";
-      
-      const halfPrice = Math.round(totalPrice / 2);
-      document.getElementById('cartHalfPrice').innerText = halfPrice.toLocaleString('uz-UZ') + " UZS";
-      document.getElementById('paymentRequiredAmount').innerText = halfPrice.toLocaleString('uz-UZ') + " UZS";
-
-      const container = document.getElementById('cartItemsContainer');
-      if (keys.length === 0) {
-        container.innerHTML = `<div class="py-6 text-center text-stone-500 text-xs">Savatingiz hozircha bo'sh. Mahsulot tanlang!</div>`;
-        return;
+    function submitOrder() {
+      const total = updateTotal();
+      if (total === 0) {
+        return alert("Iltimos, avval kamida bitta mahsulot tanlang!");
       }
 
-      container.innerHTML = keys.map(id => {
-        const item = productsDatabase[id];
-        const qty = cart[id];
-        return `
-          <div class="flex items-center justify-between p-2.5 rounded-xl bg-white hairline-border">
-            <div class="flex-1 pr-2">
-              <h5 class="text-xs sm:text-sm font-semibold text-espresso-950">${item.name}</h5>
-              <span class="text-[10px] text-stone-500">${item.price.toLocaleString('uz-UZ')} UZS &bull; jami: <b class="text-burgundy-700">${(item.price * qty).toLocaleString('uz-UZ')} UZS</b></span>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <button onclick="changeCartItemQty('${id}', -1)" class="w-6 h-6 rounded-lg bg-cream-200 text-espresso-900 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-minus text-[9px]"></i></button>
-              <span class="w-5 text-center text-xs font-bold">${qty}</span>
-              <button onclick="changeCartItemQty('${id}', 1)" class="w-6 h-6 rounded-lg bg-espresso-950 text-cream-50 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-plus text-[9px]"></i></button>
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const date = document.getElementById('custDate').value.trim();
+      const time = document.getElementById('custTime').value.trim();
+      const method = document.getElementById('custMethod').value;
 
-    // Modal
-    const cartModal = document.getElementById('cartModal');
-    function openCartModal() {
-      updateCartUI();
-      cartModal.classList.remove('hidden');
-    }
-    function closeCartModal() {
-      cartModal.classList.add('hidden');
-    }
-
-    // 1-BOSQICHDAN O'TISH
-    function handleProceedOrder() {
-      const keys = Object.keys(cart);
-      if (keys.length === 0) return alert("Iltimos, avval mahsulot tanlang!");
-
-      const name = document.getElementById('orderCustomerName').value.trim();
-      const phone = document.getElementById('orderCustomerPhone').value.trim();
-      const date = document.getElementById('orderDate').value.trim();
-      const time = document.getElementById('orderTime').value.trim();
-
+      // MAJBURIY MAYDONLAR TEKSHIRUVI
       if (!name) return alert("Iltimos, ismingizni kiriting!");
       if (!phone || phone === "+998" || phone.length < 9) return alert("Iltimos, telefon raqamingizni to'liq kiriting!");
       if (!date) return alert("Iltimos, buyurtma sanasini belgilang!");
-      if (!time) return alert("Iltimos, tayyor bo'lish vaqtini belgilang!");
+      if (!time) return alert("Iltimos, buyurtma soatini (vaqtini) belgilang!");
 
-      // AGAR TELEGRAM WEBAPP ICHIDA BO'LSA
-      if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData) {
-        let orderText = buildOrderSummaryText();
-        try {
-          window.Telegram.WebApp.sendData(orderText);
-          window.Telegram.WebApp.close();
-          return;
-        } catch (e) {
-          console.log("Telegram sendData xatosi, brauzer rejimiga o'tadi:", e);
+      let itemsText = "";
+      let index = 1;
+      menuItems.forEach(item => {
+        if (cart[item.id]) {
+          const sum = cart[item.id] * item.price;
+          itemsText += `${index}. ${item.name} — ${cart[item.id]} ta x ${item.price.toLocaleString()} = ${sum.toLocaleString()} UZS\n`;
+          index++;
         }
-      }
-
-      // ODDIY BRAUZER BO'LSA: 2-bosqich ochiladi
-      document.getElementById('step1Container').classList.add('hidden');
-      document.getElementById('step2Container').classList.remove('hidden');
-    }
-
-    function backToStep1() {
-      document.getElementById('step2Container').classList.add('hidden');
-      document.getElementById('step1Container').classList.remove('hidden');
-    }
-
-    function copyCardNumber() {
-      navigator.clipboard.writeText("9860777788889999");
-      alert("Karta raqami nusxalandi: 9860 7777 8888 9999");
-    }
-
-    function buildOrderSummaryText() {
-      const name = document.getElementById('orderCustomerName').value.trim();
-      const phone = document.getElementById('orderCustomerPhone').value.trim();
-      const date = document.getElementById('orderDate').value.trim();
-      const time = document.getElementById('orderTime').value.trim();
-      const notes = document.getElementById('orderNotes').value.trim();
-      const orderType = document.querySelector('input[name="orderTypeChoice"]:checked').value;
-
-      let totalSum = 0;
-      let text = `👤 Mijoz: ${name}\n📞 Tel: ${phone}\n📦 Usul: ${orderType}\n📅 Vaqt: ${date} (${time})\n`;
-      if (notes) text += `📝 Izoh: ${notes}\n`;
-      text += `\n📋 Mahsulotlar:\n`;
-
-      Object.keys(cart).forEach((id, idx) => {
-        const item = productsDatabase[id];
-        const qty = cart[id];
-        const line = item.price * qty;
-        totalSum += line;
-        text += `${idx + 1}. ${item.name} — ${qty} ta x ${item.price.toLocaleString('uz-UZ')} = ${line.toLocaleString('uz-UZ')} UZS\n`;
       });
 
-      const half = Math.round(totalSum / 2);
-      text += `\n💰 Jami: ${totalSum.toLocaleString('uz-UZ')} UZS\n💳 50% To'lov: ${half.toLocaleString('uz-UZ')} UZS`;
-      return text;
-    }
+      const prepay = Math.round(total * 0.5);
+      const summaryText = 
+        `👤 Mijoz: ${name}\n` +
+        `📞 Tel: ${phone}\n` +
+        `📦 Usul: ${method}\n` +
+        `📅 Sana: ${date}\n` +
+        `🕒 Soat: ${time}\n\n` +
+        `📋 Mahsulotlar:\n${itemsText}\n` +
+        `💰 Jami: ${total.toLocaleString()} UZS\n` +
+        `💳 50% To'lov: ${prepay.toLocaleString()} UZS`;
 
-    // 2-BOSQICH: CHEKNI VA BUYURTMANI GURUHGA YUBORISH
-    async function submitFinalOrderWithReceipt() {
-      const fileInput = document.getElementById('receiptFileInput');
-      if (!fileInput.files || fileInput.files.length === 0) {
-        return alert("Iltimos, to'lov cheki skrinshotini yuklang!");
-      }
-
-      const submitBtn = document.getElementById('finalSubmitBtn');
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Yuborilmoqda...`;
-
-      const orderSummary = buildOrderSummaryText();
-      const orderId = "#" + Math.floor(1000 + Math.random() * 9000);
-      const fullCaption = `🌐 SAYT BUYURTMASI (${orderId})\n-----------------------------\n${orderSummary}`;
-
-      const formData = new FormData();
-      formData.append("chat_id", ADMIN_CHAT_ID);
-      formData.append("photo", fileInput.files[0]);
-      formData.append("caption", fullCaption);
-
-      try {
-        const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
-          method: "POST",
-          body: formData
-        });
-
-        if (response.ok) {
-          const savedData = {
-            orderId: orderId,
-            time: document.getElementById('orderTime').value,
-            date: document.getElementById('orderDate').value,
-            amount: document.getElementById('paymentRequiredAmount').innerText,
-            customer: document.getElementById('orderCustomerName').value
-          };
-          localStorage.setItem('sabina_last_order', JSON.stringify(savedData));
-
-          showOrderSuccessView(savedData);
-          cart = {};
-          updateCartUI();
-        } else {
-          alert("Chekni yuborishda xatolik bo'ldi. Qaytadan urinib ko'ring.");
-        }
-      } catch (err) {
-        alert("Tarmoq xatosi yuz berdi!");
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = `<i class="fa-solid fa-check"></i> <span>Tasdiqlash & Yuborish</span>`;
+      // TELEGRAM BOTGA YUBORISH VA OYNANI YOPISH
+      if (tg && tg.sendData) {
+        tg.sendData(summaryText);
+        tg.close();
+      } else {
+        alert("Buyurtmangiz tayyorlandi! Telegram bot orqali ochilganda avtomatik yuboriladi.");
       }
     }
 
-    function showOrderSuccessView(data) {
-      document.getElementById('step2Container').classList.add('hidden');
-      document.getElementById('receiptContainer').classList.remove('hidden');
-
-      document.getElementById('receiptDetails').innerHTML = `
-        <div class="flex justify-between border-b pb-1.5">
-          <span class="text-stone-500 font-semibold">Buyurtma kodi:</span>
-          <span class="font-bold text-burgundy-700">${data.orderId}</span>
-        </div>
-        <div class="flex justify-between border-b pb-1.5">
-          <span class="text-stone-500 font-semibold">Mijoz:</span>
-          <span class="font-bold text-espresso-950">${data.customer}</span>
-        </div>
-        <div class="flex justify-between border-b pb-1.5">
-          <span class="text-stone-500 font-semibold">Olib ketish vaqti:</span>
-          <span class="font-bold text-espresso-950">${data.date} (${data.time})</span>
-        </div>
-        <div class="flex justify-between">
-          <span class="text-stone-500 font-semibold">50% To'lov:</span>
-          <span class="font-bold text-emerald-700">${data.amount} (To'landi)</span>
-        </div>
-      `;
-      checkActiveOrderBanner();
-    }
-
-    function showSavedReceipt() {
-      const saved = localStorage.getItem('sabina_last_order');
-      if (saved) {
-        openCartModal();
-        document.getElementById('step1Container').classList.add('hidden');
-        document.getElementById('step2Container').classList.add('hidden');
-        showOrderSuccessView(JSON.parse(saved));
-      }
-    }
-
-    function clearSavedOrderAndClose() {
-      closeCartModal();
-      document.getElementById('receiptContainer').classList.add('hidden');
-      document.getElementById('step1Container').classList.remove('hidden');
-    }
-
-    function checkActiveOrderBanner() {
-      const saved = localStorage.getItem('sabina_last_order');
-      const banner = document.getElementById('activeOrderBanner');
-      if (saved && banner) {
-        banner.classList.remove('hidden');
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      renderProducts('somsa');
-      updateCartUI();
-      checkActiveOrderBanner();
-
-      const today = new Date().toISOString().split('T')[0];
-      const dateInput = document.getElementById('orderDate');
-      if (dateInput) {
-        dateInput.value = today;
-        dateInput.min = today;
-      }
-
-      if (window.Telegram && window.Telegram.WebApp) {
-        window.Telegram.WebApp.ready();
-        window.Telegram.WebApp.expand();
-      }
-    });
+    renderMenu();
   </script>
 </body>
 </html>
