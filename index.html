@@ -12,7 +12,7 @@
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- FontAwesome Icons -->
@@ -67,6 +67,16 @@
     .hairline-border { border: 1px solid rgba(43, 38, 33, 0.09); }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Raqam kiritish maydonining strelkalarini yashirish */
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
   </style>
 </head>
 
@@ -208,7 +218,7 @@
 
           <!-- Card 3 -->
           <div class="snap-start shrink-0 w-[240px] sm:w-[280px] bg-white rounded-2xl overflow-hidden hairline-border shadow-xs flex flex-col">
-            <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=600&q=80" alt="Do'lta Non" class="w-full h-44 object-cover">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="Do'lta Non" class="w-full h-44 object-cover">
             <div class="p-4 flex flex-col flex-1 justify-between">
               <div>
                 <h3 class="font-serif text-lg font-bold text-espresso-950">Do'lta Non (Katta)</h3>
@@ -254,7 +264,7 @@
           Mahsulotlarni Tanlang
         </h2>
         <p class="text-stone-600 text-xs sm:text-sm mt-1">
-          Kategoriyalardan kerakli somsa yoki non turlarini tanlab, savatga qo'shing.
+          Kerakli somsa yoki non turlarini tanlang. O'rtadagi katakka bosib sonini o'zingiz yozishingiz mumkin.
         </p>
       </div>
 
@@ -498,7 +508,6 @@
       "s_mini": { cat: "somsa", name: "Somsa mini", price: 2000, img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=400&q=80" },
 
       // --- NONLAR ---
-      // --- NONLAR ---
       "n_dolta_kichik": { cat: "non", name: "Do'lta non kichik", price: 8000, img: "https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?auto=format&fit=crop&w=400&q=80" },
       "n_dolta_katta": { cat: "non", name: "Dolta non", price: 10000, img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80" },
       "n_dolta_patir": { cat: "non", name: "Dolta patir", price: 15000, img: "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=400&q=80" },
@@ -534,9 +543,12 @@
                 <p class="text-xs text-brand-700 font-extrabold mt-1">${item.price.toLocaleString()} UZS</p>
               </div>
               <div class="mt-4 pt-3 hairline-t flex items-center justify-between">
-                <div class="flex items-center gap-2 bg-cream-100 rounded-lg p-1 hairline-border">
+                <div class="flex items-center gap-1 bg-cream-100 rounded-lg p-1 hairline-border">
                   <button onclick="changeQty('${id}', -1)" class="w-7 h-7 rounded bg-white font-bold text-brand-700 shadow-xs flex items-center justify-center">-</button>
-                  <span class="w-6 text-center text-xs font-bold">${qty}</span>
+                  <input type="number" min="1" max="9999" value="${qty}" 
+                         oninput="handleQtyInput('${id}', this.value)" 
+                         onblur="handleQtyBlur('${id}', this)"
+                         class="w-12 h-7 text-center text-xs font-bold border rounded bg-white outline-none focus:border-brand-700">
                   <button onclick="changeQty('${id}', 1)" class="w-7 h-7 rounded bg-brand-700 text-white font-bold shadow-xs flex items-center justify-center">+</button>
                 </div>
                 <button onclick="addToCart('${id}')" class="px-3 py-1.5 rounded-lg bg-espresso-950 hover:bg-brand-700 text-cream-50 text-xs font-semibold transition">
@@ -572,16 +584,63 @@
     function changeQty(id, delta) {
       if (cart[id]) {
         cart[id] += delta;
-        if (cart[id] <= 0) delete cart[id];
+        if (cart[id] <= 0) {
+          delete cart[id];
+        }
       } else if (delta > 0) {
         cart[id] = 1;
       }
       updateUI();
     }
 
+    // Foydalanuvchi sonni qo'lda yozayotganda (raqam o'chirilganda mahsulot o'chib ketmasligi uchun)
+    function handleQtyInput(id, val) {
+      if (val === "" || val === null) {
+        return; // Vaqtincha bo'sh turganda xatolik bermaydi va o'chirmaydi
+      }
+      let num = parseInt(val, 10);
+      if (!isNaN(num) && num > 0) {
+        cart[id] = num;
+        calculateTotalsOnly();
+      }
+    }
+
+    // Foydalanuvchi katakchadan chiqqanda (blur bo'lganda) tekshirish
+    function handleQtyBlur(id, inputEl) {
+      let num = parseInt(inputEl.value, 10);
+      if (isNaN(num) || num <= 0) {
+        cart[id] = 1;
+        inputEl.value = 1;
+      } else {
+        cart[id] = num;
+      }
+      updateUI();
+    }
+
+    // Matn terilayotgan paytda faqat summalarni tezkor hisoblash
+    function calculateTotalsOnly() {
+      const keys = Object.keys(cart);
+      let totalCount = 0;
+      let totalPrice = 0;
+
+      keys.forEach(id => {
+        const qty = cart[id];
+        totalCount += qty;
+        totalPrice += (menuDatabase[id].price * qty);
+      });
+
+      document.getElementById('navCartCount').innerText = totalCount;
+      document.querySelectorAll('.cart-drawer-count').forEach(el => el.innerText = totalCount);
+      document.getElementById('cartTotalPrice').innerText = totalPrice.toLocaleString() + " UZS";
+      document.getElementById('orderSummaryTotal').innerText = totalPrice.toLocaleString() + " UZS";
+      document.getElementById('orderSummaryPrepay').innerText = Math.round(totalPrice * 0.5).toLocaleString() + " UZS";
+      document.getElementById('orderItemsCountBadge').innerText = totalCount + " ta taom";
+    }
+
     // 4. Savat va Hisob-kitobni yangilash
     function updateUI() {
       renderProducts();
+
       const keys = Object.keys(cart);
       let totalCount = 0;
       let totalPrice = 0;
@@ -606,21 +665,23 @@
           <div class="flex items-center justify-between p-2.5 bg-white rounded-xl hairline-border">
             <div>
               <p class="text-xs font-bold text-espresso-950">${menuDatabase[id].name}</p>
-              <p class="text-[11px] text-stone-500">${menuDatabase[id].price.toLocaleString()} UZS x ${cart[id]}</p>
+              <p class="text-[11px] text-stone-500">${menuDatabase[id].price.toLocaleString()} UZS</p>
             </div>
-            <div class="flex items-center gap-2">
-              <button onclick="changeQty('${id}', -1)" class="w-6 h-6 rounded bg-cream-200 font-bold text-xs">-</button>
-              <span class="text-xs font-bold">${cart[id]}</span>
-              <button onclick="changeQty('${id}', 1)" class="w-6 h-6 rounded bg-brand-700 text-white font-bold text-xs">+</button>
+            <div class="flex items-center gap-1.5">
+              <button onclick="changeQty('${id}', -1)" class="w-7 h-7 rounded bg-cream-200 font-bold text-xs flex items-center justify-center">-</button>
+              <input type="number" min="1" max="9999" value="${cart[id]}" 
+                     oninput="handleQtyInput('${id}', this.value)" 
+                     onblur="handleQtyBlur('${id}', this)"
+                     class="w-12 h-7 text-center text-xs font-bold border rounded bg-white outline-none focus:border-brand-700">
+              <button onclick="changeQty('${id}', 1)" class="w-7 h-7 rounded bg-brand-700 text-white font-bold text-xs flex items-center justify-center">+</button>
             </div>
           </div>
         `).join('');
       }
 
-      // Anketadagi hisob-kitob bloki
+      // Anketadagi ro'yxat
       const summaryList = document.getElementById('orderItemsSummaryList');
-      const badgeCount = document.getElementById('orderItemsCountBadge');
-      badgeCount.innerText = totalCount + " ta taom";
+      document.getElementById('orderItemsCountBadge').innerText = totalCount + " ta taom";
 
       if (keys.length === 0) {
         summaryList.innerHTML = `<p class="text-stone-400 italic text-center py-2">Hozircha mahsulot tanlanmagan. Yuqoridagi menyudan taom tanlang.</p>`;
@@ -637,13 +698,12 @@
       }
 
       document.getElementById('orderSummaryTotal').innerText = totalPrice.toLocaleString() + " UZS";
-      const prepay = Math.round(totalPrice * 0.5);
-      document.getElementById('orderSummaryPrepay').innerText = prepay.toLocaleString() + " UZS";
+      document.getElementById('orderSummaryPrepay').innerText = Math.round(totalPrice * 0.5).toLocaleString() + " UZS";
     }
 
     // 5. Modal boshqaruvi
     const cartModal = document.getElementById('cartModal');
-    function openCartModal() { cartModal.classList.remove('hidden'); }
+    function openCartModal() { updateUI(); cartModal.classList.remove('hidden'); }
     function closeCartModal() { cartModal.classList.add('hidden'); }
     window.addEventListener('click', (e) => { if (e.target === cartModal) closeCartModal(); });
 
