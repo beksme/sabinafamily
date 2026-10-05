@@ -218,7 +218,7 @@
 
           <!-- Card 3 -->
           <div class="snap-start shrink-0 w-[240px] sm:w-[280px] bg-white rounded-2xl overflow-hidden hairline-border shadow-xs flex flex-col">
-            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="Do'lta Non" class="w-full h-44 object-cover">
+            <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=600&q=80" alt="Do'lta Non" class="w-full h-44 object-cover">
             <div class="p-4 flex flex-col flex-1 justify-between">
               <div>
                 <h3 class="font-serif text-lg font-bold text-espresso-950">Do'lta Non (Katta)</h3>
@@ -326,7 +326,7 @@
             Buyurtmachi Anketasi
           </h2>
           <p class="text-stone-600 text-xs sm:text-sm mt-1">
-            Quyidagi ma'lumotlarni to'ldiring. Buyurtma berish tugmasi bosilganda ma'lumotlar avtomatik tarzda Telegram botga uzatiladi.
+            Quyidagi ma'lumotlarni to'ldiring. Barcha maydonlar majburiy bo'lib, buyurtma berish tugmasi bosilganda ma'lumotlar avtomatik tarzda Telegram botga uzatiladi.
           </p>
         </div>
 
@@ -593,10 +593,9 @@
       updateUI();
     }
 
-    // Foydalanuvchi sonni qo'lda yozayotganda (raqam o'chirilganda mahsulot o'chib ketmasligi uchun)
     function handleQtyInput(id, val) {
       if (val === "" || val === null) {
-        return; // Vaqtincha bo'sh turganda xatolik bermaydi va o'chirmaydi
+        return;
       }
       let num = parseInt(val, 10);
       if (!isNaN(num) && num > 0) {
@@ -605,7 +604,6 @@
       }
     }
 
-    // Foydalanuvchi katakchadan chiqqanda (blur bo'lganda) tekshirish
     function handleQtyBlur(id, inputEl) {
       let num = parseInt(inputEl.value, 10);
       if (isNaN(num) || num <= 0) {
@@ -617,7 +615,6 @@
       updateUI();
     }
 
-    // Matn terilayotgan paytda faqat summalarni tezkor hisoblash
     function calculateTotalsOnly() {
       const keys = Object.keys(cart);
       let totalCount = 0;
@@ -712,7 +709,7 @@
     document.getElementById('carouselNextBtn')?.addEventListener('click', () => dishesTrack.scrollBy({ left: 260, behavior: 'smooth' }));
     document.getElementById('carouselPrevBtn')?.addEventListener('click', () => dishesTrack.scrollBy({ left: -260, behavior: 'smooth' }));
 
-    // 7. YAKUNIY BUYURTMANI TELEGRAMGA UZATISH
+    // 7. YAKUNIY BUYURTMANI TELEGRAMGA UZATISH (Qat'iy majburiy tekshiruv bilan)
     function submitFinalOrder() {
       const keys = Object.keys(cart);
       if (keys.length === 0) {
@@ -727,11 +724,11 @@
       const time = document.getElementById('orderTime').value.trim();
       const method = document.querySelector('input[name="orderMethod"]:checked')?.value || "Novvoyxonadan olib ketish";
 
-      // Majburiy maydonlar tekshiruvi
+      // 4 ta asosiy maydonning barchasi qat'iy majburiy
       if (!name) return alert("Iltimos, ismingizni kiriting!");
       if (!phone || phone === "+998" || phone.length < 9) return alert("Iltimos, telefon raqamingizni to'liq kiriting!");
       if (!date) return alert("Iltimos, buyurtma sanasini tanlang!");
-      if (!time) return alert("Iltimos, buyurtma vaqtini belgilang!");
+      if (!time) return alert("Iltimos, buyurtma vaqtini (soatini) belgilang!");
 
       let totalSum = 0;
       let itemsText = "";
@@ -753,24 +750,18 @@
         `💰 Jami: ${totalSum.toLocaleString()} UZS\n` +
         `💳 50% To'lov: ${prepay.toLocaleString()} UZS`;
 
-      // Telegram WebApp ichida bo'lsa
+      // Telegram WebApp orqali uzatish
       if (tg && tg.sendData) {
         tg.sendData(summaryText);
         tg.close();
       } else {
-        // Oddiy brauzerdan kirgan bo'lsa
         const encoded = encodeURIComponent("🔔 Yangi Buyurtma (Sakina):\n\n" + summaryText);
         window.open(`https://t.me/sakinamallbot?text=${encoded}`, '_blank');
       }
     }
 
-    // 8. Boshlang'ich yuklash
+    // 8. Boshlang'ich yuklash (Sana va vaqt bo'sh turadi, mijoz o'zi tanlashi shart)
     document.addEventListener("DOMContentLoaded", () => {
-      const today = new Date();
-      document.getElementById('orderDate').value = today.toISOString().split('T')[0];
-      today.setMinutes(today.getMinutes() + 30);
-      document.getElementById('orderTime').value = today.toTimeString().slice(0, 5);
-
       updateUI();
     });
   </script>
