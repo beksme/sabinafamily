@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  
+  
   <title>Sakina — Issiq Somsa & Non Markazi | Oltinko'l, Andijon</title>
   <meta name="description" content="Andijon viloyati Oltinko'l tumanidagi shinam maskan: Sakina Somsa & Non Markazi. Halol tandir somsalar, issiq patirlar, shirmoy nonlar va tezkor xizmat.">
 
@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
+  
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -68,11 +68,10 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* Raqam kiritish maydonining strelkalarini yashirish */
-    input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { 
-      -webkit-appearance: none; 
-      margin: 0; 
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
     }
     input[type=number] {
       -moz-appearance: textfield;
@@ -101,7 +100,7 @@
   <!-- Header -->
   <header class="sticky top-0 z-40 bg-cream-100/95 backdrop-blur-md hairline-b transition-all">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
-      
+      
       <!-- Logo -->
       <a href="#" class="flex flex-col group">
         <span class="font-serif text-2xl sm:text-3xl tracking-widest text-brand-700 font-bold uppercase leading-none">
@@ -141,8 +140,8 @@
     <!-- Hero Section -->
     <section class="relative pt-8 pb-12 sm:pt-16 sm:pb-20 overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
-        <span class="text-[11px] sm:text-xs tracking-widest uppercase font-bold text-brand-700 block mb-2">
-          Oltinko'l, Andijon &bull; Issiq Tandir Taomlari
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-50 text-[11px] sm:text-xs tracking-wider uppercase font-bold text-brand-700 mb-2 border border-brand-200">
+          🎁 Bot orqali barcha buyurtmalarga 10% chegirma!
         </span>
         <h1 class="font-serif text-3xl sm:text-6xl font-normal text-espresso-950 tracking-tight leading-tight mb-4">
           Haqiqiy barra go'shtli somsa va qaynoq patirlar.
@@ -181,7 +180,7 @@
 
       <div class="relative px-4 sm:px-6 lg:px-8">
         <div id="dishesTrack" class="flex gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory py-2">
-          
+          
           <!-- Card 1 -->
           <div class="snap-start shrink-0 w-[240px] sm:w-[280px] bg-white rounded-2xl overflow-hidden hairline-border shadow-xs flex flex-col">
             <img src="https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&w=600&q=80" alt="Go'shtli Somsa" class="w-full h-44 object-cover">
@@ -317,7 +316,7 @@
     <!-- OQ VA YORUG' ASOSIY BUYURTMA ANKETASI (#buyurtma) -->
     <section id="buyurtma" class="py-12 sm:py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="bg-white rounded-3xl p-6 sm:p-10 hairline-border shadow-xl">
-        
+        
         <div class="text-center max-w-xl mx-auto mb-8">
           <span class="text-[11px] tracking-widest uppercase font-bold text-brand-700 block mb-1">
             Tezkor Rasmiylashtirish
@@ -343,14 +342,25 @@
             <p class="text-stone-400 italic text-center py-2">Hozircha mahsulot tanlanmagan. Yuqoridagi menyudan taom tanlang.</p>
           </div>
 
-          <div class="mt-4 pt-3 hairline-t flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-            <div>
-              <span class="text-xs text-stone-500 block">Jami hisob:</span>
-              <span id="orderSummaryTotal" class="font-serif text-2xl font-bold text-brand-700">0 UZS</span>
+          <!-- 10% Chegirma va To'lov Tafsilotlari -->
+          <div class="mt-4 pt-3 hairline-t space-y-2">
+            <div class="flex justify-between text-xs text-stone-600">
+              <span>Mahsulotlar jami:</span>
+              <span id="subTotalDisplay" class="font-semibold text-stone-900">0 UZS</span>
             </div>
-            <div class="text-xs text-stone-500 sm:text-right">
-              <span>50% oldindan to'lov: </span>
-              <strong id="orderSummaryPrepay" class="text-espresso-950 font-bold">0 UZS</strong>
+            <div class="flex justify-between text-xs text-emerald-700 font-bold">
+              <span>🎁 Bot orqali 10% chegirma:</span>
+              <span id="discountDisplay">-0 UZS</span>
+            </div>
+            <div class="flex items-center justify-between pt-2 hairline-t">
+              <div>
+                <span class="text-xs text-stone-500 block">Yakuniy to'lov:</span>
+                <span id="orderSummaryTotal" class="font-serif text-2xl font-bold text-brand-700">0 UZS</span>
+              </div>
+              <div class="text-xs text-stone-500 text-right">
+                <span>50% oldindan to'lov: </span>
+                <strong id="orderSummaryPrepay" class="text-espresso-950 font-bold block text-sm sm:text-base">0 UZS</strong>
+              </div>
             </div>
           </div>
         </div>
@@ -429,11 +439,11 @@
             </div>
           </div>
           <div class="lg:col-span-7 rounded-2xl overflow-hidden hairline-border aspect-video bg-stone-200">
-            <iframe 
+            <iframe 
               title="Sakina Joylashuvi"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1510.1120735943284!2d72.15693224853726!3d40.80106796487856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bc97a00e2c6a89:0x12599de692cfc8c9!2sOltinko'l,+Andijan+region,+Uzbekistan!5e0!3m2!1sen!2s!4v1791013714311!5m2!1sen!2s" 
-              class="w-full h-full border-0" 
-              allowfullscreen="" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1510.1120735943284!2d72.15693224853726!3d40.80106796487856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bc97a00e2c6a89:0x12599de692cfc8c9!2sOltinko'l,+Andijan+region,+Uzbekistan!5e0!3m2!1sen!2s!4v1791013714311!5m2!1sen!2s" 
+              class="w-full h-full border-0" 
+              allowfullscreen="" 
               loading="lazy">
             </iframe>
           </div>
@@ -475,12 +485,22 @@
 
       <div id="cartItemsContainer" class="space-y-2 mb-5"></div>
 
-      <div class="p-4 rounded-2xl bg-cream-200 hairline-border mb-5 flex items-center justify-between">
-        <div>
-          <span class="text-[11px] uppercase tracking-wider text-stone-500 block font-bold">Jami hisob:</span>
-          <span id="cartTotalPrice" class="font-serif text-2xl font-bold text-brand-700">0 UZS</span>
+      <div class="p-4 rounded-2xl bg-cream-200 hairline-border mb-5 space-y-2">
+        <div class="flex justify-between text-xs text-stone-600">
+          <span>Mahsulotlar narxi:</span>
+          <span id="modalSubTotal">0 UZS</span>
         </div>
-        <span class="text-xs text-stone-600">Issiq & Barra</span>
+        <div class="flex justify-between text-xs text-emerald-700 font-bold">
+          <span>10% Chegirma:</span>
+          <span id="modalDiscount">-0 UZS</span>
+        </div>
+        <div class="flex items-center justify-between pt-2 hairline-t">
+          <div>
+            <span class="text-[11px] uppercase tracking-wider text-stone-500 block font-bold">Yakuniy hisob:</span>
+            <span id="cartTotalPrice" class="font-serif text-2xl font-bold text-brand-700">0 UZS</span>
+          </div>
+          <span class="text-xs text-stone-600">Issiq & Barra</span>
+        </div>
       </div>
 
       <a href="#buyurtma" onclick="closeCartModal()" class="w-full py-3.5 rounded-xl bg-brand-700 hover:bg-brand-800 text-cream-50 text-xs uppercase tracking-widest font-bold transition flex items-center justify-center gap-2">
@@ -545,8 +565,8 @@
               <div class="mt-4 pt-3 hairline-t flex items-center justify-between">
                 <div class="flex items-center gap-1 bg-cream-100 rounded-lg p-1 hairline-border">
                   <button onclick="changeQty('${id}', -1)" class="w-7 h-7 rounded bg-white font-bold text-brand-700 shadow-xs flex items-center justify-center">-</button>
-                  <input type="number" min="1" max="9999" value="${qty}" 
-                         oninput="handleQtyInput('${id}', this.value)" 
+                  <input type="number" min="1" max="9999" value="${qty}" 
+                         oninput="handleQtyInput('${id}', this.value)" 
                          onblur="handleQtyBlur('${id}', this)"
                          class="w-12 h-7 text-center text-xs font-bold border rounded bg-white outline-none focus:border-brand-700">
                   <button onclick="changeQty('${id}', 1)" class="w-7 h-7 rounded bg-brand-700 text-white font-bold shadow-xs flex items-center justify-center">+</button>
@@ -607,8 +627,8 @@
     function handleQtyBlur(id, inputEl) {
       let num = parseInt(inputEl.value, 10);
       if (isNaN(num) || num <= 0) {
-        cart[id] = 1;
-        inputEl.value = 1;
+        delete cart[id]; // 3-qadam: 0 yoki bo'sh qoldirsa to'liq tozalash
+        inputEl.value = 0;
       } else {
         cart[id] = num;
       }
@@ -616,21 +636,32 @@
     }
 
     function calculateTotalsOnly() {
-      const keys = Object.keys(cart);
+      // 3-qadam: Savatdagi 0 dan katta qiymatlarni hisoblash
+      const validKeys = Object.keys(cart).filter(id => cart[id] > 0);
       let totalCount = 0;
-      let totalPrice = 0;
+      let rawTotal = 0;
 
-      keys.forEach(id => {
+      validKeys.forEach(id => {
         const qty = cart[id];
         totalCount += qty;
-        totalPrice += (menuDatabase[id].price * qty);
+        rawTotal += (menuDatabase[id].price * qty);
       });
+
+      const discount = Math.round(rawTotal * 0.10);
+      const finalTotal = rawTotal - discount;
+      const prepay = Math.round(finalTotal * 0.5);
 
       document.getElementById('navCartCount').innerText = totalCount;
       document.querySelectorAll('.cart-drawer-count').forEach(el => el.innerText = totalCount);
-      document.getElementById('cartTotalPrice').innerText = totalPrice.toLocaleString() + " UZS";
-      document.getElementById('orderSummaryTotal').innerText = totalPrice.toLocaleString() + " UZS";
-      document.getElementById('orderSummaryPrepay').innerText = Math.round(totalPrice * 0.5).toLocaleString() + " UZS";
+      
+      document.getElementById('modalSubTotal').innerText = rawTotal.toLocaleString() + " UZS";
+      document.getElementById('modalDiscount').innerText = "-" + discount.toLocaleString() + " UZS";
+      document.getElementById('cartTotalPrice').innerText = finalTotal.toLocaleString() + " UZS";
+
+      document.getElementById('subTotalDisplay').innerText = rawTotal.toLocaleString() + " UZS";
+      document.getElementById('discountDisplay').innerText = "-" + discount.toLocaleString() + " UZS";
+      document.getElementById('orderSummaryTotal').innerText = finalTotal.toLocaleString() + " UZS";
+      document.getElementById('orderSummaryPrepay').innerText = prepay.toLocaleString() + " UZS";
       document.getElementById('orderItemsCountBadge').innerText = totalCount + " ta taom";
     }
 
@@ -638,20 +669,28 @@
     function updateUI() {
       renderProducts();
 
+      // 3-qadam: 0 ga teng mahsulotlar savatda qolmasligi uchun tozalash
+      Object.keys(cart).forEach(id => {
+        if (!cart[id] || cart[id] <= 0) delete cart[id];
+      });
+
       const keys = Object.keys(cart);
       let totalCount = 0;
-      let totalPrice = 0;
+      let rawTotal = 0;
 
       keys.forEach(id => {
         const qty = cart[id];
         totalCount += qty;
-        totalPrice += (menuDatabase[id].price * qty);
+        rawTotal += (menuDatabase[id].price * qty);
       });
+
+      const discount = Math.round(rawTotal * 0.10);
+      const finalTotal = rawTotal - discount;
+      const prepay = Math.round(finalTotal * 0.5);
 
       // Badgelar
       document.getElementById('navCartCount').innerText = totalCount;
       document.querySelectorAll('.cart-drawer-count').forEach(el => el.innerText = totalCount);
-      document.getElementById('cartTotalPrice').innerText = totalPrice.toLocaleString() + " UZS";
 
       // Savat oynasi (Modal)
       const modalContainer = document.getElementById('cartItemsContainer');
@@ -666,8 +705,8 @@
             </div>
             <div class="flex items-center gap-1.5">
               <button onclick="changeQty('${id}', -1)" class="w-7 h-7 rounded bg-cream-200 font-bold text-xs flex items-center justify-center">-</button>
-              <input type="number" min="1" max="9999" value="${cart[id]}" 
-                     oninput="handleQtyInput('${id}', this.value)" 
+              <input type="number" min="1" max="9999" value="${cart[id]}" 
+                     oninput="handleQtyInput('${id}', this.value)" 
                      onblur="handleQtyBlur('${id}', this)"
                      class="w-12 h-7 text-center text-xs font-bold border rounded bg-white outline-none focus:border-brand-700">
               <button onclick="changeQty('${id}', 1)" class="w-7 h-7 rounded bg-brand-700 text-white font-bold text-xs flex items-center justify-center">+</button>
@@ -675,6 +714,10 @@
           </div>
         `).join('');
       }
+
+      document.getElementById('modalSubTotal').innerText = rawTotal.toLocaleString() + " UZS";
+      document.getElementById('modalDiscount').innerText = "-" + discount.toLocaleString() + " UZS";
+      document.getElementById('cartTotalPrice').innerText = finalTotal.toLocaleString() + " UZS";
 
       // Anketadagi ro'yxat
       const summaryList = document.getElementById('orderItemsSummaryList');
@@ -694,8 +737,10 @@
         }).join('');
       }
 
-      document.getElementById('orderSummaryTotal').innerText = totalPrice.toLocaleString() + " UZS";
-      document.getElementById('orderSummaryPrepay').innerText = Math.round(totalPrice * 0.5).toLocaleString() + " UZS";
+      document.getElementById('subTotalDisplay').innerText = rawTotal.toLocaleString() + " UZS";
+      document.getElementById('discountDisplay').innerText = "-" + discount.toLocaleString() + " UZS";
+      document.getElementById('orderSummaryTotal').innerText = finalTotal.toLocaleString() + " UZS";
+      document.getElementById('orderSummaryPrepay').innerText = prepay.toLocaleString() + " UZS";
     }
 
     // 5. Modal boshqaruvi
@@ -709,58 +754,78 @@
     document.getElementById('carouselNextBtn')?.addEventListener('click', () => dishesTrack.scrollBy({ left: 260, behavior: 'smooth' }));
     document.getElementById('carouselPrevBtn')?.addEventListener('click', () => dishesTrack.scrollBy({ left: -260, behavior: 'smooth' }));
 
-    // 7. YAKUNIY BUYURTMANI TELEGRAMGA UZATISH (Qat'iy majburiy tekshiruv bilan)
+    // 7. YAKUNIY BUYURTMANI TELEGRAMGA UZATISH (1, 2, 3-qadamlar himoyasi bilan)
     function submitFinalOrder() {
-      const keys = Object.keys(cart);
-      if (keys.length === 0) {
+      // 3-qadam himoyasi: Haqiqiy 0 dan katta mahsulotlar borligini qat'iy tekshirish
+      const validKeys = Object.keys(cart).filter(id => cart[id] > 0);
+      if (validKeys.length === 0) {
         alert("Iltimos, avval kamida bitta taom tanlang!");
         window.location.hash = "#menyu";
         return;
       }
 
       const name = document.getElementById('orderName').value.trim();
-      const phone = document.getElementById('orderPhone').value.trim();
+      let phone = document.getElementById('orderPhone').value.trim();
       const date = document.getElementById('orderDate').value.trim();
       const time = document.getElementById('orderTime').value.trim();
       const method = document.querySelector('input[name="orderMethod"]:checked')?.value || "Novvoyxonadan olib ketish";
 
-      // 4 ta asosiy maydonning barchasi qat'iy majburiy
+      // 2-qadam himoyasi: Telefon raqamini chuqur tekshirish (raqamlar soni 9 tadan kam bo'lmasligi shart)
+      const digitsOnly = phone.replace(/\D/g, ''); // Faqat raqamlarni ajratib olish
       if (!name) return alert("Iltimos, ismingizni kiriting!");
-      if (!phone || phone === "+998" || phone.length < 9) return alert("Iltimos, telefon raqamingizni to'liq kiriting!");
+      if (digitsOnly.length < 9) {
+        return alert("Iltimos, telefon raqamingizni to'liq kiriting! (Masalan: +998 50 666 30 20 yoki 901234567)");
+      }
       if (!date) return alert("Iltimos, buyurtma sanasini tanlang!");
       if (!time) return alert("Iltimos, buyurtma vaqtini (soatini) belgilang!");
 
-      let totalSum = 0;
+      let rawTotal = 0;
       let itemsText = "";
-      keys.forEach((id, index) => {
+      validKeys.forEach((id, index) => {
         const item = menuDatabase[id];
         const line = item.price * cart[id];
-        totalSum += line;
+        rawTotal += line;
         itemsText += `${index + 1}. ${item.name} — ${cart[id]} ta x ${item.price.toLocaleString()} = ${line.toLocaleString()} UZS\n`;
       });
 
-      const prepay = Math.round(totalSum * 0.5);
-      const summaryText = 
+      const discount = Math.round(rawTotal * 0.10);
+      const finalTotal = rawTotal - discount;
+      const prepay = Math.round(finalTotal * 0.5);
+
+      const summaryText = 
         `👤 Mijoz: ${name}\n` +
         `📞 Tel: ${phone}\n` +
         `📦 Usul: ${method}\n` +
         `📅 Sana: ${date}\n` +
         `🕒 Soat: ${time}\n\n` +
         `📋 Mahsulotlar:\n${itemsText}\n` +
-        `💰 Jami: ${totalSum.toLocaleString()} UZS\n` +
+        `💵 Mahsulotlar jami: ${rawTotal.toLocaleString()} UZS\n` +
+        `🎁 10% Chegirma: -${discount.toLocaleString()} UZS\n` +
+        `💰 Yakuniy to'lov: ${finalTotal.toLocaleString()} UZS\n` +
         `💳 50% To'lov: ${prepay.toLocaleString()} UZS`;
 
-      // Telegram WebApp orqali uzatish
-      if (tg && tg.sendData) {
-        tg.sendData(summaryText);
-        tg.close();
-      } else {
-        const encoded = encodeURIComponent("🔔 Yangi Buyurtma (Sakina):\n\n" + summaryText);
-        window.open(`https://t.me/sakinamallbot?text=${encoded}`, '_blank');
+      // 1-usul: Telegram WebApp orqali to'g'ridan-to'g'ri uzatish
+      let sentSuccessfully = false;
+      if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.sendData) {
+        try {
+          window.Telegram.WebApp.sendData(summaryText);
+          window.Telegram.WebApp.close();
+          sentSuccessfully = true;
+          return;
+        } catch (e) {
+          console.warn("sendData ishlamadi, zaxira yo'lga o'tiladi:", e);
+        }
+      }
+
+      // 2-usul (ZAXIRA): Kompyuter, oddiy brauzer yoki Inline tugma uchun
+      if (!sentSuccessfully) {
+        const botUsername = "sakinamallbot";
+        const encoded = encodeURIComponent(summaryText);
+        window.location.href = `https://t.me/${botUsername}?text=${encoded}`;
       }
     }
 
-    // 8. Boshlang'ich yuklash (Sana va vaqt bo'sh turadi, mijoz o'zi tanlashi shart)
+    // 8. Boshlang'ich yuklash (Sana va vaqt bo'sh turadi)
     document.addEventListener("DOMContentLoaded", () => {
       updateUI();
     });
