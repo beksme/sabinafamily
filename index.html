@@ -183,7 +183,7 @@
           
           <!-- Card 1 -->
           <div class="snap-start shrink-0 w-[240px] sm:w-[280px] bg-white rounded-2xl overflow-hidden hairline-border shadow-xs flex flex-col">
-            <img src="https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&w=600&q=80" alt="Go'shtli Somsa" class="w-full h-44 object-cover">
+            <img src="images/goshtli-somsa.png" alt="Go'shtli Somsa" class="w-full h-44 object-cover" onerror="this.src='images/mol-goshtli-somsa.png'">
             <div class="p-4 flex flex-col flex-1 justify-between">
               <div>
                 <h3 class="font-serif text-lg font-bold text-espresso-950">Tandir Go'shtli Somsa</h3>
@@ -200,7 +200,7 @@
 
           <!-- Card 2 -->
           <div class="snap-start shrink-0 w-[240px] sm:w-[280px] bg-white rounded-2xl overflow-hidden hairline-border shadow-xs flex flex-col">
-            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="Issiq Patir" class="w-full h-44 object-cover">
+            <img src="images/patir.png" alt="Issiq Patir" class="w-full h-44 object-cover">
             <div class="p-4 flex flex-col flex-1 justify-between">
               <div>
                 <h3 class="font-serif text-lg font-bold text-espresso-950">Yog'li Issiq Patir</h3>
@@ -217,15 +217,15 @@
 
           <!-- Card 3 -->
           <div class="snap-start shrink-0 w-[240px] sm:w-[280px] bg-white rounded-2xl overflow-hidden hairline-border shadow-xs flex flex-col">
-            <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=600&q=80" alt="Do'lta Non" class="w-full h-44 object-cover">
+            <img src="images/dolta-patir.png" alt="Do'lta Patir" class="w-full h-44 object-cover">
             <div class="p-4 flex flex-col flex-1 justify-between">
               <div>
-                <h3 class="font-serif text-lg font-bold text-espresso-950">Do'lta Non (Katta)</h3>
-                <p class="text-xs text-stone-500 mt-1">An'anaviy tandirda pishirilgan shirmoy do'lta non.</p>
+                <h3 class="font-serif text-lg font-bold text-espresso-950">Do'lta Patir</h3>
+                <p class="text-xs text-stone-500 mt-1">An'anaviy tandirda pishirilgan shirmoy do'lta patir.</p>
               </div>
               <div class="mt-4 flex items-center justify-between pt-3 hairline-t">
-                <span class="text-sm font-bold text-brand-700">10,000 UZS</span>
-                <button onclick="addToCart('n_dolta_katta')" class="px-3 py-1.5 rounded-lg bg-brand-700 text-white text-xs font-semibold hover:bg-brand-800 transition">
+                <span class="text-sm font-bold text-brand-700">15,000 UZS</span>
+                <button onclick="addToCart('n_dolta_patir')" class="px-3 py-1.5 rounded-lg bg-brand-700 text-white text-xs font-semibold hover:bg-brand-800 transition">
                   <i class="fa-solid fa-plus text-[10px]"></i> Qo'shish
                 </button>
               </div>
@@ -234,7 +234,7 @@
 
           <!-- Card 4 -->
           <div class="snap-start shrink-0 w-[240px] sm:w-[280px] bg-white rounded-2xl overflow-hidden hairline-border shadow-xs flex flex-col">
-            <img src="https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=600&q=80" alt="Oshqovoq Somsa" class="w-full h-44 object-cover">
+            <img src="images/oshqovoqsomsa.jpg" alt="Oshqovoq Somsa" class="w-full h-44 object-cover">
             <div class="p-4 flex flex-col flex-1 justify-between">
               <div>
                 <h3 class="font-serif text-lg font-bold text-espresso-950">Oshqovoqli Somsa</h3>
@@ -263,17 +263,26 @@
           Mahsulotlarni Tanlang
         </h2>
         <p class="text-stone-600 text-xs sm:text-sm mt-1">
-          Kerakli somsa yoki non turlarini tanlang. O'rtadagi katakka bosib sonini o'zingiz yozishingiz mumkin.
+          Kerakli toifani tanlang. O'rtadagi katakka bosib taomlar sonini o'zingiz yozishingiz mumkin.
         </p>
       </div>
 
-      <!-- Menu Category Tabs -->
-      <div class="flex items-center justify-center gap-3 mb-8">
-        <button id="tabSomsaBtn" onclick="switchCategory('somsa')" class="px-6 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-brand-700 text-white shadow-sm flex items-center gap-2">
+      <!-- Menu Category Tabs (5 ta kategoriya) -->
+      <div class="flex items-center justify-center gap-2 sm:gap-3 mb-8 overflow-x-auto no-scrollbar py-2">
+        <button id="tab_somsa" onclick="switchCategory('somsa')" class="cat-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-brand-700 text-white shadow-sm whitespace-nowrap">
           <span>🥟 Somsalar</span>
         </button>
-        <button id="tabNonBtn" onclick="switchCategory('non')" class="px-6 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 flex items-center gap-2">
+        <button id="tab_non" onclick="switchCategory('non')" class="cat-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 whitespace-nowrap">
           <span>🥖 Nonlar</span>
+        </button>
+        <button id="tab_manti" onclick="switchCategory('manti')" class="cat-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 whitespace-nowrap">
+          <span>🥟 Mantilar</span>
+        </button>
+        <button id="tab_grill" onclick="switchCategory('grill')" class="cat-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 whitespace-nowrap">
+          <span>🍗 Grill</span>
+        </button>
+        <button id="tab_shirinlik" onclick="switchCategory('shirinlik')" class="cat-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 whitespace-nowrap">
+          <span>🍰 Shirinliklar</span>
         </button>
       </div>
 
@@ -529,30 +538,38 @@
       tg.expand();
     }
 
-    // 2. Kassa mahsulotlari ma'lumotlar bazasi
+    // 2. Kassa mahsulotlari ma'lumotlar bazasi (21 ta haqiqiy mahsulot va real kassa narxlari)
     const menuDatabase = {
       // --- SOMSALAR ---
-      "s_goshtli": { cat: "somsa", name: "Go'shtli somsa", price: 6000, img: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&w=400&q=80" },
-      "s_kartoshka": { cat: "somsa", name: "Kartoshka somsa", price: 4000, img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=400&q=80" },
-      "s_oshqovoq": { cat: "somsa", name: "Oshqovoq somsa", price: 4000, img: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=400&q=80" },
-      "s_tovuqli": { cat: "somsa", name: "Tovuqli somsa", price: 5000, img: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=400&q=80" },
-      "s_kok": { cat: "somsa", name: "Ko'k somsa", price: 4000, img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80" },
-      "s_mini": { cat: "somsa", name: "Somsa mini", price: 2000, img: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=400&q=80" },
+      "s_goshtli": { cat: "somsa", name: "Go'shtli somsa", price: 6000, img: "images/goshtli-somsa.png" },
+      "s_mol": { cat: "somsa", name: "Mol go'shtli somsa", price: 6000, img: "images/mol-goshtli-somsa.png" },
+      "s_kok": { cat: "somsa", name: "Ko'k somsa", price: 4000, img: "images/koksomsa.png" },
+      "s_oshqovoq": { cat: "somsa", name: "Oshqovoq somsa", price: 4000, img: "images/oshqovoqsomsa.jpg" },
+
+      // --- MANTILAR ---
+      "m_gosht": { cat: "manti", name: "Manti go'shtli", price: 4000, img: "images/manti-goshtli.png" },
+      "m_orama": { cat: "manti", name: "Manti o'rama", price: 3333, img: "images/orama-manti.jpg" },
+      "m_kok": { cat: "manti", name: "Manti ko'k", price: 2500, img: "images/manti-kok.png" },
+      "m_oshqovoq": { cat: "manti", name: "Manti oshqovoq", price: 2500, img: "images/manti-oshqovoq.png" },
 
       // --- NONLAR ---
-      "n_dolta_kichik": { cat: "non", name: "Do'lta non kichik", price: 8000, img: "https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?auto=format&fit=crop&w=400&q=80" },
-      "n_dolta_katta": { cat: "non", name: "Dolta non", price: 10000, img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80" },
-      "n_dolta_patir": { cat: "non", name: "Dolta patir", price: 15000, img: "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=400&q=80" },
-      "n_dolta_patir_katta": { cat: "non", name: "Do'lta patir katta", price: 20000, img: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=400&q=80" },
-      "n_patir": { cat: "non", name: "Patir non", price: 10000, img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80" },
-      "n_patir_katta": { cat: "non", name: "Patir katta", price: 20000, img: "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=400&q=80" },
-      "n_gijda": { cat: "non", name: "Gijda non", price: 6000, img: "https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?auto=format&fit=crop&w=400&q=80" },
-      "n_taqa": { cat: "non", name: "Taqa non", price: 6000, img: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=400&q=80" },
-      "n_kulcha": { cat: "non", name: "Kulcha non", price: 5000, img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80" },
-      "n_goshtli": { cat: "non", name: "Go'shtli non", price: 10000, img: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&w=400&q=80" },
-      "n_tovuqli": { cat: "non", name: "Tovuqli non", price: 6000, img: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=400&q=80" },
-      "n_kokatli": { cat: "non", name: "Ko'katli non", price: 10000, img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80" },
-      "n_pitsa_mini": { cat: "non", name: "Pitsa mini", price: 6000, img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80" }
+      "n_patir": { cat: "non", name: "Patir non", price: 10000, img: "images/patir.png" },
+      "n_dolta_kichik": { cat: "non", name: "Do'lta non kichik", price: 8000, img: "images/dolta-non-kichik.png" },
+      "n_dolta_patir": { cat: "non", name: "Do'lta patir", price: 15000, img: "images/dolta-patir.png" },
+      "n_tovuqli": { cat: "non", name: "Tovuqli non", price: 6000, img: "images/tovuqli-non.png" },
+      "n_kokatli": { cat: "non", name: "Ko'katli non", price: 10000, img: "images/kokatli-non.png" },
+
+      // --- GRILL ---
+      "g_60": { cat: "grill", name: "Grill 60", price: 60000, img: "images/grill-60.jpg" },
+      "g_65": { cat: "grill", name: "Grill 65", price: 65000, img: "images/grill-65.jpg" },
+      "g_oyoq": { cat: "grill", name: "Oyoqchalar kg", price: 10000, img: "images/oyoqchalar-kg.jpg" },
+
+      // --- SHIRINLIKLAR & TORTLAR ---
+      "t_benazir": { cat: "shirinlik", name: "Benazir tort", price: 130000, img: "images/benazir.jpg" },
+      "t_80": { cat: "shirinlik", name: "Tort 80", price: 80000, img: "images/tort80.jpg" },
+      "t_70": { cat: "shirinlik", name: "Tort 70", price: 70000, img: "images/tort70.jpg" },
+      "d_benazir_p": { cat: "shirinlik", name: "Benazir pirojniy", price: 12000, img: "images/benazir-pirojniy.png" },
+      "d_12": { cat: "shirinlik", name: "Desert 12", price: 12000, img: "images/desert12.jpg" }
     };
 
     let cart = {};
@@ -568,7 +585,7 @@
         const qty = cart[id] || 0;
         return `
           <div class="bg-white rounded-2xl overflow-hidden hairline-border shadow-xs flex flex-col justify-between">
-            <img src="${item.img}" alt="${item.name}" class="w-full h-40 object-cover">
+            <img src="${item.img}" alt="${item.name}" class="w-full h-40 object-cover" onerror="this.src='https://placehold.co/400x300?text=Sakina'">
             <div class="p-4 flex flex-col flex-1 justify-between">
               <div>
                 <h4 class="font-bold text-espresso-950 text-sm sm:text-base">${item.name}</h4>
@@ -595,16 +612,19 @@
 
     function switchCategory(cat) {
       activeCategory = cat;
-      const tabSomsa = document.getElementById('tabSomsaBtn');
-      const tabNon = document.getElementById('tabNonBtn');
+      const categories = ['somsa', 'non', 'manti', 'grill', 'shirinlik'];
+      
+      categories.forEach(c => {
+        const btn = document.getElementById('tab_' + c);
+        if (btn) {
+          if (c === cat) {
+            btn.className = "cat-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-brand-700 text-white shadow-sm whitespace-nowrap";
+          } else {
+            btn.className = "cat-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 whitespace-nowrap";
+          }
+        }
+      });
 
-      if (cat === 'somsa') {
-        tabSomsa.className = "px-6 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-brand-700 text-white shadow-sm flex items-center gap-2";
-        tabNon.className = "px-6 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 flex items-center gap-2";
-      } else {
-        tabNon.className = "px-6 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-brand-700 text-white shadow-sm flex items-center gap-2";
-        tabSomsa.className = "px-6 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 flex items-center gap-2";
-      }
       renderProducts();
     }
 
