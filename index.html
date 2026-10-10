@@ -183,7 +183,7 @@
           
           <!-- Card 1 -->
           <div class="snap-start shrink-0 w-[240px] sm:w-[280px] bg-white rounded-2xl overflow-hidden hairline-border shadow-xs flex flex-col">
-            <img src="images/goshtli-somsa.png" alt="Go'shtli Somsa" class="w-full h-44 object-cover" onerror="this.src='images/mol-goshtli-somsa.png'">
+            <img src="images/goshtli-somsa.png" alt="Go'shtli Somsa" class="w-full h-44 object-cover">
             <div class="p-4 flex flex-col flex-1 justify-between">
               <div>
                 <h3 class="font-serif text-lg font-bold text-espresso-950">Tandir Go'shtli Somsa</h3>
@@ -267,22 +267,35 @@
         </p>
       </div>
 
-      <!-- Menu Category Tabs (5 ta kategoriya) -->
-      <div class="flex items-center justify-center gap-2 sm:gap-3 mb-8 overflow-x-auto no-scrollbar py-2">
-        <button id="tab_somsa" onclick="switchCategory('somsa')" class="cat-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-brand-700 text-white shadow-sm whitespace-nowrap">
-          <span>🥟 Somsalar</span>
+      <!-- Menu Category Tabs (Surish oson bo'lgan boshqaruv) -->
+      <div class="relative max-w-2xl mx-auto mb-8 px-8 sm:px-10">
+        <!-- Chapga surish tugmasi -->
+        <button type="button" onclick="scrollCat(-160)" class="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white hairline-border text-espresso-900 flex items-center justify-center shadow-md hover:bg-cream-200 transition z-10 active:scale-95" title="Chapga surish">
+          <i class="fa-solid fa-chevron-left text-xs text-brand-700"></i>
         </button>
-        <button id="tab_non" onclick="switchCategory('non')" class="cat-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 whitespace-nowrap">
-          <span>🥖 Nonlar</span>
-        </button>
-        <button id="tab_manti" onclick="switchCategory('manti')" class="cat-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 whitespace-nowrap">
-          <span>🥟 Mantilar</span>
-        </button>
-        <button id="tab_grill" onclick="switchCategory('grill')" class="cat-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 whitespace-nowrap">
-          <span>🍗 Grill</span>
-        </button>
-        <button id="tab_shirinlik" onclick="switchCategory('shirinlik')" class="cat-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 whitespace-nowrap">
-          <span>🍰 Shirinliklar</span>
+
+        <!-- Kategoriya tugmalari konteyneri -->
+        <div id="catTabsContainer" class="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto no-scrollbar scroll-smooth py-1 px-1">
+          <button id="tab_somsa" onclick="switchCategory('somsa')" class="cat-tab-btn shrink-0 px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-brand-700 text-white shadow-sm whitespace-nowrap">
+            <span>🥟 Somsalar</span>
+          </button>
+          <button id="tab_non" onclick="switchCategory('non')" class="cat-tab-btn shrink-0 px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 whitespace-nowrap">
+            <span>🥖 Nonlar</span>
+          </button>
+          <button id="tab_manti" onclick="switchCategory('manti')" class="cat-tab-btn shrink-0 px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 whitespace-nowrap">
+            <span>🥟 Mantilar</span>
+          </button>
+          <button id="tab_grill" onclick="switchCategory('grill')" class="cat-tab-btn shrink-0 px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 whitespace-nowrap">
+            <span>🍗 Grill</span>
+          </button>
+          <button id="tab_shirinlik" onclick="switchCategory('shirinlik')" class="cat-tab-btn shrink-0 px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 whitespace-nowrap">
+            <span>🍰 Shirinliklar</span>
+          </button>
+        </div>
+
+        <!-- O'ngga surish tugmasi -->
+        <button type="button" onclick="scrollCat(160)" class="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white hairline-border text-espresso-900 flex items-center justify-center shadow-md hover:bg-cream-200 transition z-10 active:scale-95" title="O'ngga surish">
+          <i class="fa-solid fa-chevron-right text-xs text-brand-700"></i>
         </button>
       </div>
 
@@ -538,11 +551,10 @@
       tg.expand();
     }
 
-    // 2. Kassa mahsulotlari ma'lumotlar bazasi (21 ta haqiqiy mahsulot va real kassa narxlari)
+    // 2. Kassa mahsulotlari ma'lumotlar bazasi (Ortiqcha takroriy somsa olib tashlandi)
     const menuDatabase = {
       // --- SOMSALAR ---
       "s_goshtli": { cat: "somsa", name: "Go'shtli somsa", price: 6000, img: "images/goshtli-somsa.png" },
-      "s_mol": { cat: "somsa", name: "Mol go'shtli somsa", price: 6000, img: "images/mol-goshtli-somsa.png" },
       "s_kok": { cat: "somsa", name: "Ko'k somsa", price: 4000, img: "images/koksomsa.png" },
       "s_oshqovoq": { cat: "somsa", name: "Oshqovoq somsa", price: 4000, img: "images/oshqovoqsomsa.jpg" },
 
@@ -574,6 +586,14 @@
 
     let cart = {};
     let activeCategory = 'somsa';
+
+    // Kategoriyalarni tugma orqali surish funksiyasi
+    function scrollCat(amount) {
+      const container = document.getElementById('catTabsContainer');
+      if (container) {
+        container.scrollBy({ left: amount, behavior: 'smooth' });
+      }
+    }
 
     // 3. Menyuni ekranga chiqarish
     function renderProducts() {
@@ -618,9 +638,9 @@
         const btn = document.getElementById('tab_' + c);
         if (btn) {
           if (c === cat) {
-            btn.className = "cat-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-brand-700 text-white shadow-sm whitespace-nowrap";
+            btn.className = "cat-tab-btn shrink-0 px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-brand-700 text-white shadow-sm whitespace-nowrap";
           } else {
-            btn.className = "cat-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 whitespace-nowrap";
+            btn.className = "cat-tab-btn shrink-0 px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 whitespace-nowrap";
           }
         }
       });
@@ -738,7 +758,7 @@
       document.querySelectorAll('.cart-drawer-count').forEach(el => el.innerText = totalCount);
       document.getElementById('modalCartItemCount').innerText = totalCount;
 
-      // Savat oynasi (Modal) - Chopar uslubidagi qizil chiqindi qutisi bilan
+      // Savat oynasi (Modal)
       const modalContainer = document.getElementById('cartItemsContainer');
       if (keys.length === 0) {
         modalContainer.innerHTML = `<p class="text-xs text-stone-500 text-center py-6">Savatingiz bo'sh. Marhamat, menyudan taom tanlang.</p>`;
@@ -760,7 +780,7 @@
               <button onclick="changeQty('${id}', 1)" class="w-7 h-7 rounded bg-brand-700 text-white font-bold text-xs flex items-center justify-center hover:bg-brand-800">+</button>
             </div>
 
-            <!-- Chopar uslubidagi Qizil Chiqindi qutisi (O'chirish) -->
+            <!-- Chiqindi qutisi (O'chirish) -->
             <button onclick="removeItemFromCart('${id}')" title="Savatdan o'chirish" class="w-7 h-7 rounded-lg text-red-500 hover:text-white hover:bg-red-500 flex items-center justify-center transition shrink-0 ml-1">
               <i class="fa-regular fa-trash-can text-sm"></i>
             </button>
@@ -874,9 +894,19 @@
       }
     }
 
-    // 8. Boshlang'ich yuklash
+    // 8. Boshlang'ich yuklash va sichqoncha g'ildiragi orqali gorizontal surish
     document.addEventListener("DOMContentLoaded", () => {
       updateUI();
+
+      const catContainer = document.getElementById('catTabsContainer');
+      if (catContainer) {
+        catContainer.addEventListener('wheel', (evt) => {
+          if (evt.deltaY !== 0) {
+            evt.preventDefault();
+            catContainer.scrollLeft += evt.deltaY;
+          }
+        }, { passive: false });
+      }
     });
   </script>
 </body>
