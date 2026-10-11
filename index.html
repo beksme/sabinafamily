@@ -141,7 +141,7 @@
     <section class="relative pt-8 pb-12 sm:pt-16 sm:pb-20 overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-50 text-[11px] sm:text-xs tracking-wider uppercase font-bold text-brand-700 mb-2 border border-brand-200">
-          🎁 Bot orqali barcha buyurtmalarga 10% chegirma!
+          ✨ Issiq tandir va qandolat mahsulotlari markazi
         </span>
         <h1 class="font-serif text-3xl sm:text-6xl font-normal text-espresso-950 tracking-tight leading-tight mb-4">
           Haqiqiy barra go'shtli somsa va qaynoq patirlar.
@@ -267,14 +267,12 @@
         </p>
       </div>
 
-      <!-- Menu Category Tabs (Surish oson bo'lgan boshqaruv) -->
+      <!-- Menu Category Tabs -->
       <div class="relative max-w-2xl mx-auto mb-8 px-8 sm:px-10">
-        <!-- Chapga surish tugmasi -->
         <button type="button" onclick="scrollCat(-160)" class="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white hairline-border text-espresso-900 flex items-center justify-center shadow-md hover:bg-cream-200 transition z-10 active:scale-95" title="Chapga surish">
           <i class="fa-solid fa-chevron-left text-xs text-brand-700"></i>
         </button>
 
-        <!-- Kategoriya tugmalari konteyneri -->
         <div id="catTabsContainer" class="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto no-scrollbar scroll-smooth py-1 px-1">
           <button id="tab_somsa" onclick="switchCategory('somsa')" class="cat-tab-btn shrink-0 px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-brand-700 text-white shadow-sm whitespace-nowrap">
             <span>🥟 Somsalar</span>
@@ -293,7 +291,6 @@
           </button>
         </div>
 
-        <!-- O'ngga surish tugmasi -->
         <button type="button" onclick="scrollCat(160)" class="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white hairline-border text-espresso-900 flex items-center justify-center shadow-md hover:bg-cream-200 transition z-10 active:scale-95" title="O'ngga surish">
           <i class="fa-solid fa-chevron-right text-xs text-brand-700"></i>
         </button>
@@ -301,7 +298,6 @@
 
       <!-- Menu Grid -->
       <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-        <!-- JS orqali to'ldiriladi -->
       </div>
     </section>
 
@@ -364,19 +360,11 @@
             <p class="text-stone-400 italic text-center py-2">Hozircha mahsulot tanlanmagan. Yuqoridagi menyudan taom tanlang.</p>
           </div>
 
-          <!-- 10% Chegirma va To'lov Tafsilotlari -->
+          <!-- To'lov Tafsilotlari (Chegirmasiz) -->
           <div class="mt-4 pt-3 hairline-t space-y-2">
-            <div class="flex justify-between text-xs text-stone-600">
-              <span>Mahsulotlar jami:</span>
-              <span id="subTotalDisplay" class="font-semibold text-stone-900">0 UZS</span>
-            </div>
-            <div class="flex justify-between text-xs text-emerald-700 font-bold">
-              <span>🎁 Bot orqali 10% chegirma:</span>
-              <span id="discountDisplay">-0 UZS</span>
-            </div>
-            <div class="flex items-center justify-between pt-2 hairline-t">
+            <div class="flex items-center justify-between pt-2">
               <div>
-                <span class="text-xs text-stone-500 block">Yakuniy to'lov:</span>
+                <span class="text-xs text-stone-500 block">Jami to'lov:</span>
                 <span id="orderSummaryTotal" class="font-serif text-2xl font-bold text-brand-700">0 UZS</span>
               </div>
               <div class="text-xs text-stone-500 text-right">
@@ -490,16 +478,15 @@
       <span>Buyurtma</span>
     </a>
     <a href="tel:+998506663020" class="flex flex-col items-center text-[10px] text-stone-600 font-bold">
-      <i class="fa-solid fa-phone text-base text-emerald-600"></i>
+      <i class="fa-solid fa-phone text-emerald-600"></i>
       <span>Qo'ng'iroq</span>
     </a>
   </div>
 
-  <!-- SAVAT MODAL OYNASI (CHOPAR USLUBIDA: TOZALASH VA O'CHIRISH BILAN) -->
+  <!-- SAVAT MODAL OYNASI -->
   <div id="cartModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-espresso-950/80 backdrop-blur-sm">
     <div class="bg-cream-100 rounded-3xl max-w-lg w-full p-5 sm:p-7 hairline-border shadow-2xl relative max-h-[90vh] overflow-y-auto">
       
-      <!-- Modal Header: Chiqish & Tozalash -->
       <div class="flex items-center justify-between mb-3 hairline-b pb-3">
         <div class="flex items-center gap-2">
           <button onclick="closeCartModal()" class="text-stone-600 hover:text-espresso-950 text-lg p-1">
@@ -510,7 +497,6 @@
           </h3>
         </div>
         
-        <!-- Chopar uslubidagi Tozalash tugmasi -->
         <button onclick="clearEntireCart()" class="text-xs font-bold text-red-600 hover:text-red-700 hover:underline flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-red-50 hairline-border transition">
           <i class="fa-regular fa-trash-can"></i>
           <span>Tozalash</span>
@@ -520,17 +506,9 @@
       <div id="cartItemsContainer" class="space-y-2 mb-5"></div>
 
       <div class="p-4 rounded-2xl bg-cream-200 hairline-border mb-5 space-y-2">
-        <div class="flex justify-between text-xs text-stone-600">
-          <span>Mahsulotlar narxi:</span>
-          <span id="modalSubTotal">0 UZS</span>
-        </div>
-        <div class="flex justify-between text-xs text-emerald-700 font-bold">
-          <span>10% Chegirma:</span>
-          <span id="modalDiscount">-0 UZS</span>
-        </div>
-        <div class="flex items-center justify-between pt-2 hairline-t">
+        <div class="flex items-center justify-between pt-2">
           <div>
-            <span class="text-[11px] uppercase tracking-wider text-stone-500 block font-bold">Yakuniy hisob:</span>
+            <span class="text-[11px] uppercase tracking-wider text-stone-500 block font-bold">Jami hisob:</span>
             <span id="cartTotalPrice" class="font-serif text-2xl font-bold text-brand-700">0 UZS</span>
           </div>
           <span class="text-xs text-stone-600">Issiq & Barra</span>
@@ -551,7 +529,7 @@
       tg.expand();
     }
 
-    // 2. Kassa mahsulotlari ma'lumotlar bazasi (Ortiqcha takroriy somsa olib tashlandi)
+    // 2. Kassa mahsulotlari ma'lumotlar bazasi
     const menuDatabase = {
       // --- SOMSALAR ---
       "s_goshtli": { cat: "somsa", name: "Go'shtli somsa", price: 6000, img: "images/goshtli-somsa.png" },
@@ -588,7 +566,6 @@
     let cart = {};
     let activeCategory = 'somsa';
 
-    // Kategoriyalarni tugma orqali surish funksiyasi
     function scrollCat(amount) {
       const container = document.getElementById('catTabsContainer');
       if (container) {
@@ -666,13 +643,11 @@
       updateUI();
     }
 
-    // Chopar uslubi: Bitta mahsulotni to'g'ridan-to'g'ri butunlay o'chirish
     function removeItemFromCart(id) {
       delete cart[id];
       updateUI();
     }
 
-    // Chopar uslubi: Butun savatni bittada tozalash
     function clearEntireCart() {
       if (Object.keys(cart).length === 0) return;
       if (confirm("Haqiqatan ham savatni to'liq tozalamoqchimisiz?")) {
@@ -682,9 +657,7 @@
     }
 
     function handleQtyInput(id, val) {
-      if (val === "" || val === null) {
-        return;
-      }
+      if (val === "" || val === null) return;
       let num = parseInt(val, 10);
       if (!isNaN(num) && num > 0) {
         cart[id] = num;
@@ -714,20 +687,14 @@
         rawTotal += (menuDatabase[id].price * qty);
       });
 
-      const discount = Math.round(rawTotal * 0.10);
-      const finalTotal = rawTotal - discount;
+      const finalTotal = rawTotal;
       const prepay = Math.round(finalTotal * 0.5);
 
       document.getElementById('navCartCount').innerText = totalCount;
       document.querySelectorAll('.cart-drawer-count').forEach(el => el.innerText = totalCount);
       document.getElementById('modalCartItemCount').innerText = totalCount;
       
-      document.getElementById('modalSubTotal').innerText = rawTotal.toLocaleString() + " UZS";
-      document.getElementById('modalDiscount').innerText = "-" + discount.toLocaleString() + " UZS";
       document.getElementById('cartTotalPrice').innerText = finalTotal.toLocaleString() + " UZS";
-
-      document.getElementById('subTotalDisplay').innerText = rawTotal.toLocaleString() + " UZS";
-      document.getElementById('discountDisplay').innerText = "-" + discount.toLocaleString() + " UZS";
       document.getElementById('orderSummaryTotal').innerText = finalTotal.toLocaleString() + " UZS";
       document.getElementById('orderSummaryPrepay').innerText = prepay.toLocaleString() + " UZS";
       document.getElementById('orderItemsCountBadge').innerText = totalCount + " ta taom";
@@ -751,8 +718,7 @@
         rawTotal += (menuDatabase[id].price * qty);
       });
 
-      const discount = Math.round(rawTotal * 0.10);
-      const finalTotal = rawTotal - discount;
+      const finalTotal = rawTotal;
       const prepay = Math.round(finalTotal * 0.5);
 
       document.getElementById('navCartCount').innerText = totalCount;
@@ -771,7 +737,6 @@
               <p class="text-[11px] text-stone-500">${menuDatabase[id].price.toLocaleString()} UZS</p>
             </div>
 
-            <!-- Sonini o'zgartirish bloki -->
             <div class="flex items-center gap-1.5 shrink-0">
               <button onclick="changeQty('${id}', -1)" class="w-7 h-7 rounded bg-cream-200 font-bold text-xs flex items-center justify-center hover:bg-cream-300">-</button>
               <input type="number" min="1" max="9999" value="${cart[id]}" 
@@ -781,7 +746,6 @@
               <button onclick="changeQty('${id}', 1)" class="w-7 h-7 rounded bg-brand-700 text-white font-bold text-xs flex items-center justify-center hover:bg-brand-800">+</button>
             </div>
 
-            <!-- Chiqindi qutisi (O'chirish) -->
             <button onclick="removeItemFromCart('${id}')" title="Savatdan o'chirish" class="w-7 h-7 rounded-lg text-red-500 hover:text-white hover:bg-red-500 flex items-center justify-center transition shrink-0 ml-1">
               <i class="fa-regular fa-trash-can text-sm"></i>
             </button>
@@ -789,8 +753,6 @@
         `).join('');
       }
 
-      document.getElementById('modalSubTotal').innerText = rawTotal.toLocaleString() + " UZS";
-      document.getElementById('modalDiscount').innerText = "-" + discount.toLocaleString() + " UZS";
       document.getElementById('cartTotalPrice').innerText = finalTotal.toLocaleString() + " UZS";
 
       // Anketadagi ro'yxat
@@ -811,8 +773,6 @@
         }).join('');
       }
 
-      document.getElementById('subTotalDisplay').innerText = rawTotal.toLocaleString() + " UZS";
-      document.getElementById('discountDisplay').innerText = "-" + discount.toLocaleString() + " UZS";
       document.getElementById('orderSummaryTotal').innerText = finalTotal.toLocaleString() + " UZS";
       document.getElementById('orderSummaryPrepay').innerText = prepay.toLocaleString() + " UZS";
     }
@@ -860,8 +820,7 @@
         itemsText += `${index + 1}. ${item.name} — ${cart[id]} ta x ${item.price.toLocaleString()} = ${line.toLocaleString()} UZS\n`;
       });
 
-      const discount = Math.round(rawTotal * 0.10);
-      const finalTotal = rawTotal - discount;
+      const finalTotal = rawTotal;
       const prepay = Math.round(finalTotal * 0.5);
 
       const summaryText = 
@@ -871,8 +830,6 @@
         `📅 Sana: ${date}\n` +
         `🕒 Soat: ${time}\n\n` +
         `📋 Mahsulotlar:\n${itemsText}\n` +
-        `💵 Mahsulotlar jami: ${rawTotal.toLocaleString()} UZS\n` +
-        `🎁 10% Chegirma: -${discount.toLocaleString()} UZS\n` +
         `💰 Yakuniy to'lov: ${finalTotal.toLocaleString()} UZS\n` +
         `💳 50% To'lov: ${prepay.toLocaleString()} UZS`;
 
@@ -889,13 +846,12 @@
       }
 
       if (!sentSuccessfully) {
-        const botUsername = "sakinamallbot";
+        const botUsername = "sakinamarketbot";
         const encoded = encodeURIComponent(summaryText);
         window.location.href = `https://t.me/${botUsername}?text=${encoded}`;
       }
     }
 
-    // 8. Boshlang'ich yuklash va sichqoncha g'ildiragi orqali gorizontal surish
     document.addEventListener("DOMContentLoaded", () => {
       updateUI();
 
