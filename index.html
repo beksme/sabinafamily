@@ -293,7 +293,7 @@
           <button id="tab_shirinlik" onclick="switchCategory('shirinlik')" class="cat-tab-btn shrink-0 px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 whitespace-nowrap">
             <span>🍰 Shirinliklar</span>
           </button>
-          <button id="tab_fastfood" onclick="switchCategory('fastfood')" class="cat-tab-btn shrink-0 px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all">
+          <button id="tab_fastfood" onclick="switchCategory('fastfood')" class="cat-tab-btn shrink-0 px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold transition-all bg-cream-200 text-stone-700 hover:bg-cream-300 whitespace-nowrap">
             <span>🍔 Fast Food</span>
           </button>
         </div>
@@ -649,7 +649,7 @@
 
     function switchCategory(cat) {
       activeCategory = cat;
-      const categories = ['somsa', 'non', 'manti', 'grill', 'shirinlik'];
+      const categories = ['somsa', 'non', 'manti', 'grill', 'shirinlik', 'fastfood'];
       
       categories.forEach(c => {
         const btn = document.getElementById('tab_' + c);
